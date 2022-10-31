@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useAppContext } from "../../context/appContext";
+import modalInfos, { ModalInfos } from "../../data/modalInfo";
 
 const Background = styled.div`
   position: fixed;
@@ -63,12 +64,19 @@ const Explainer = () => {
   return (
     <Background className={state.showModal ? "show" : ""}>
       <Modal>
-        <Title>🗡 Strength</Title>
-        <Descr>
-          Put points into STR to create a melee fighter, a crusher, a
-          bar-bending, boulder-throwing behemoth who smashes his way through
-          problems.
-        </Descr>
+        {state.modalInfoKey ? (
+          <>
+            <Title>
+              {modalInfos[state.modalInfoKey as keyof ModalInfos].title}
+            </Title>
+            <Descr>
+              {modalInfos[state.modalInfoKey as keyof ModalInfos].descr}
+            </Descr>
+          </>
+        ) : (
+          <>SOMETHING WENT WRONG!</>
+        )}
+
         <Closer onClick={() => hideModal()}>X</Closer>
       </Modal>
     </Background>

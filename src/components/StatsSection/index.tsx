@@ -1,6 +1,7 @@
 import { useHeroContext } from "../../context/heroContext";
 import styled from "styled-components";
 import { StatKey } from "../../context/hero";
+import { useAppContext } from "../../context/appContext";
 
 const EditorBlock = styled.div`
   display: flex;
@@ -75,10 +76,12 @@ const ValueScale = ({ val, max }: { val: number; max: number }) => {
 
 const StatEditor = ({ stat }: { stat: StatKey }) => {
   const { hero, setStat } = useHeroContext();
+  const { showModal } = useAppContext();
   return (
     <EditorBlock>
       <EditorTitle>{stat}</EditorTitle>
-      <ValueScale val={hero.stats[stat]} max={10} />
+      <HelpButton onClick={() => showModal(stat)}>?</HelpButton>
+      {/* <ValueScale val={hero.stats[stat]} max={10} /> */}
       <EditorNumber>{hero.stats[stat]}</EditorNumber>
       <EditorButtonRow>
         <EditorButton onClick={() => setStat(stat, hero.stats[stat] - 1)}>
@@ -107,39 +110,29 @@ const StatBlocksRow = styled.div`
   margin-top: 1.5rem;
 `;
 
-// const StatsBlockDescription = styled.p`
-//   text-align: center;
-// `;
-
 const StatsBlockTitle = styled.h3``;
+
+const HelpButton = styled.button`
+  border-style: solid;
+  background-color: ${(props) => props.theme.palette.common.background};
+  color: ${(props) => props.theme.palette.common.text};
+  border-color: ${(props) => props.theme.palette.common.text};
+  border-radius: 15px;
+  border-width: 1px;
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+`;
 
 const StatsSection = () => {
   return (
     <StatBlocks>
-      <StatBlocksRow>
-        <StatsBlockTitle>🗡 Strength</StatsBlockTitle>
-        <StatEditor stat="STR" />
-      </StatBlocksRow>
-      <StatBlocksRow>
-        <StatsBlockTitle>🏹 Dexterity</StatsBlockTitle>
-        <StatEditor stat="DEX" />
-      </StatBlocksRow>
-      <StatBlocksRow>
-        <StatsBlockTitle>🛡 Constitution</StatsBlockTitle>
-        <StatEditor stat="CON" />
-      </StatBlocksRow>
-      <StatBlocksRow>
-        <StatsBlockTitle>🧠 Wisdom</StatsBlockTitle>
-        <StatEditor stat="WIS" />
-      </StatBlocksRow>
-      <StatBlocksRow>
-        <StatsBlockTitle>🗣 Charisma</StatsBlockTitle>
-        <StatEditor stat="CHA" />
-      </StatBlocksRow>
-      <StatBlocksRow>
-        <StatsBlockTitle>📖 Intelligence</StatsBlockTitle>
-        <StatEditor stat="INT" />
-      </StatBlocksRow>
+      <StatEditor stat="STR" />
+      <StatEditor stat="DEX" />
+      <StatEditor stat="CON" />
+      <StatEditor stat="WIS" />
+      <StatEditor stat="CHA" />
+      <StatEditor stat="INT" />
     </StatBlocks>
   );
 };
