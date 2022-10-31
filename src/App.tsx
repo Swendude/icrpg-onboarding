@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import HeroHeader from "./components/HeroHeader";
-import { useHeroContext } from "./context/heroContext";
-import DetailsSection from "./sections/DetailsSection";
+import Header from "./components/Header";
+import DetailsSection from "./components/DetailsSection";
 import { createGlobalStyle } from "styled-components";
-import StatsSection from "./sections/StatsSection";
+import StatsSection from "./components/StatsSection";
 
 const Global = createGlobalStyle`
   body {
@@ -13,7 +12,7 @@ const Global = createGlobalStyle`
     }
 `;
 
-const AppWrapper = styled.div`
+const Wrapper = styled.div`
   max-width: 88vw;
   margin: 0 auto;
   margin-top: 2vh;
@@ -26,7 +25,7 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-const AppBody = styled.div`
+const Main = styled.div`
   padding-left: 2.5rem;
   padding-right: 2.5rem;
   width: 100%;
@@ -34,16 +33,16 @@ const AppBody = styled.div`
   flex-direction: column;
 `;
 
-const HeaderTitle = styled.h2`
+const HTitle = styled.h2`
   color: ${(props) => props.theme.palette.common.foreground};
 `;
 
-const HeaderDescr = styled.p`
+const HDescr = styled.p`
   color: ${(props) => props.theme.palette.common.foreground};
   font-style: italic;
 `;
 
-const AppSpacer = styled.div`
+const Spacer = styled.div`
   position: relative;
   height: 0px;
   width: 100%;
@@ -54,7 +53,7 @@ const AppSpacer = styled.div`
   border-color: ${(props) => props.theme.palette.common.text};
 `;
 
-const HeaderSpacer = styled(AppSpacer)`
+const HSpacer = styled(Spacer)`
   margin-top: 0;
 `;
 
@@ -63,24 +62,23 @@ function App() {
 
   // const { hero, setName } = context;
   return (
-    <AppWrapper>
+    <Wrapper>
       <Global />
-      <HeroHeader />
-
-      <AppBody>
-        <HeaderSpacer />
-        <HeaderTitle>Details</HeaderTitle>
-        <HeaderDescr>
+      <Header />
+      <Main>
+        <HSpacer />
+        <HTitle>Details</HTitle>
+        <HDescr>
           Who are you? Where do you come from? Most important, what shall we
           call you?
-        </HeaderDescr>
+        </HDescr>
         <DetailsSection />
-        <AppSpacer />
-        <HeaderTitle>Stats</HeaderTitle>
-        <HeaderDescr>How good are you in things?</HeaderDescr>
+        <Spacer />
+        <HTitle>Stats</HTitle>
+        <HDescr>How good are you in things?</HDescr>
         <StatsSection />
-      </AppBody>
-    </AppWrapper>
+      </Main>
+    </Wrapper>
   );
 }
 

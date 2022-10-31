@@ -1,6 +1,6 @@
 import { useHeroContext } from "../../context/heroContext";
 import styled from "styled-components";
-import { StatKey } from "../../types/hero";
+import { StatKey } from "../../context/hero";
 
 const EditorBlock = styled.div`
   display: flex;
@@ -107,14 +107,13 @@ const StatBlocksRow = styled.div`
   margin-top: 1.5rem;
 `;
 
-const StatsBlockDescription = styled.p`
-  text-align: center;
-`;
+// const StatsBlockDescription = styled.p`
+//   text-align: center;
+// `;
 
 const StatsBlockTitle = styled.h3``;
 
 const StatsSection = () => {
-  const { hero, setStat } = useHeroContext();
   return (
     <StatBlocks>
       <StatBlocksRow>

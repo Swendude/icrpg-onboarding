@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { useHeroContext } from "../../context/heroContext";
-import { DateTime } from "luxon";
-import { useEffect, useState } from "react";
 const HeaderContainer = styled.div`
   width: 100%;
   padding: 1.2rem 2.5rem;
