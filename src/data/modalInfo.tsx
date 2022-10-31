@@ -27,7 +27,7 @@ const modalInfos = {
   CHA: {
     title: "🗣 Charisma",
     descr:
-      "Your strength of will is measured by CHAR. You’ll be using this to roll for persuasive actions, to resist fear, or drive enemies back with a battle cry."
+      "Your strength of will is measured by CHA. You’ll be using this to roll for persuasive actions, to resist fear, or drive enemies back with a battle cry."
   },
   INT: {
     title: "📖 Intelligence",

@@ -5,6 +5,7 @@ import { createGlobalStyle } from "styled-components";
 import StatsSection from "./components/StatsSection";
 import Explainer from "./components/Explainer";
 import HelpButton from "./components/HelpButton";
+import Footer from "./components/Footer";
 
 const Global = createGlobalStyle`
   body {
@@ -12,6 +13,10 @@ const Global = createGlobalStyle`
     color: ${(props) => props.theme.palette.common.text};
     font-size: 1.4rem;
     }
+
+  a {
+    color: ${(props) => props.theme.palette.common.foreground};
+  }
 `;
 
 const Wrapper = styled.div`
@@ -86,6 +91,7 @@ function App() {
         </Main>
       </Wrapper>
       <Explainer />
+      <Footer />
     </>
   );
 }
