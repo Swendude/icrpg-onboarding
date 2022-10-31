@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import DetailsSection from "./components/DetailsSection";
 import { createGlobalStyle } from "styled-components";
 import StatsSection from "./components/StatsSection";
+import Explainer from "./components/Explainer";
 
 const Global = createGlobalStyle`
   body {
@@ -78,6 +79,7 @@ function App() {
         <HDescr>How good are you in things?</HDescr>
         <StatsSection />
       </Main>
+      <Explainer />
     </Wrapper>
   );
 }

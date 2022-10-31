@@ -2,7 +2,6 @@ import * as React from "react";
 import { HeroContext, Hero } from "./hero";
 import { useDebounce } from "./hooks";
 import { DateTime } from "luxon";
-import { deepEqual, deepStrictEqual } from "assert";
 
 export const useHeroContext = () => {
   const heroContextI = React.useContext(heroContext);
