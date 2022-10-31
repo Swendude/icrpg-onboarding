@@ -71,7 +71,7 @@ const StatBlocks = styled.div`
 `;
 
 const Wrapper = styled.div`
-  flex: 1 1 30rem;
+  flex: 1 1 32%;
   display: flex;
   align-items: center;
   padding: 1rem;

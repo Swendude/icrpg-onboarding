@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useAppContext } from "../../context/appContext";
 import modalInfos, { ModalInfos } from "../../data/modalInfo";
+import HyperLinkedText from "../HyperLinkedText";
 
 const Background = styled.div`
   position: fixed;
@@ -57,6 +58,7 @@ const Closer = styled.button`
     background-color: ${(props) => props.theme.palette.common.background};
   }
 `;
+
 const Explainer = () => {
   const { state, hideModal } = useAppContext();
   return (
@@ -68,7 +70,9 @@ const Explainer = () => {
               {modalInfos[state.modalInfoKey as keyof ModalInfos].title}
             </Title>
             <Descr>
-              {modalInfos[state.modalInfoKey as keyof ModalInfos].descr}
+              <HyperLinkedText
+                text={modalInfos[state.modalInfoKey as keyof ModalInfos].descr}
+              />
             </Descr>
           </>
         ) : (

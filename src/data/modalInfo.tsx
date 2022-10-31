@@ -2,7 +2,12 @@ const modalInfos = {
   STR: {
     title: "🗡 Strength",
     descr:
-      "Put points into STR to create a melee fighter, a crusher, a bar-bending, boulder-throwing behemoth who smashes his way through problems."
+      "Put points into STR to create a MELEE fighter, a crusher, a bar-bending, boulder-throwing behemoth who smashes his way through problems."
+  },
+  MELEE: {
+    title: "⚔️ Melee",
+    descr:
+      "Close combat fighting, using swords, axes, clubs. Heck, even a rusty pipe will do!"
   },
   DEX: {
     title: "🏹 Dexterity",
@@ -22,19 +27,45 @@ const modalInfos = {
   CHA: {
     title: "🗣 Charisma",
     descr:
-      "Your strength of will is measured by CHARISMA. You’ll be using this to roll for persuasive actions, to resist fear, or drive enemies back with a battle cry."
+      "Your strength of will is measured by CHAR. You’ll be using this to roll for persuasive actions, to resist fear, or drive enemies back with a battle cry."
   },
   INT: {
     title: "📖 Intelligence",
     descr:
-      "Some heroes use wits over fists. Their key STAT is INT, which is used to cast SPELL investigate mysteries, recall details, or operate complex machinery."
+      "Some heroes use wits over fists. Their key STAT is INT, which is used to cast SPELL, investigate mysteries, recall details, or operate complex machinery."
   },
   STATS: {
     title: "👤 Stats",
     descr:
       "Characters have a set of STATS that describe their capability in different areas. Depending on what’s being tried, you’ll almost always get to add the value of one STAT to your D20."
+  },
+  STAT: {
+    title: "👤 Stats",
+    descr:
+      "Characters have a set of STATS that describe their capability in different areas. Depending on what’s being tried, you’ll almost always get to add the value of one STAT to your D20."
+  },
+  SPELL: {
+    title: "🪄 Spells",
+    descr:
+      "Manipulate time, bend matter, heal and empower your allies! Or just throw a fireball, we don't care. SPELL come in different levels and a SPELL cost 2 x level SP to cast!"
+  },
+  SPELLS: {
+    title: "🪄 Spells",
+    descr:
+      "Manipulate time, bend matter, heal and empower your allies! Or just throw a fireball, we don't care. SPELL come in different levels and a SPELL cost 2 x level SP to cast!"
+  },
+  SP: {
+    title: "🔵 Skill Points",
+    descr:
+      "SP is used to cast powerfull spells and perform mighty abilities. Every character start with 10 SP and they are regained on a rest."
+  },
+  HP: {
+    title: "❤️ Health Points",
+    descr:
+      "Don't lose out on these or you might die! Every character start with 10 HP and they are regained on a rest."
   }
 };
+export type InfoKeys = keyof ModalInfos;
 
 export type ModalInfos = typeof modalInfos;
 
