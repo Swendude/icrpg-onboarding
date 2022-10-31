@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import HeroProvider from "./context/heroContext";
+import AppProvider from "./context/appContext";
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./theme";
 
@@ -13,9 +14,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={defaultTheme}>
-      <HeroProvider>
-        <App />
-      </HeroProvider>
+      <AppProvider>
+        <HeroProvider>
+          <App />
+        </HeroProvider>
+      </AppProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

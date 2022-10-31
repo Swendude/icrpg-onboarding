@@ -63,24 +63,26 @@ function App() {
 
   // const { hero, setName } = context;
   return (
-    <Wrapper>
-      <Global />
-      <Header />
-      <Main>
-        <HSpacer />
-        <HTitle>Details</HTitle>
-        <HDescr>
-          Who are you? Where do you come from? Most important, what shall we
-          call you?
-        </HDescr>
-        <DetailsSection />
-        <Spacer />
-        <HTitle>Stats</HTitle>
-        <HDescr>How good are you in things?</HDescr>
-        <StatsSection />
-      </Main>
+    <>
+      <Wrapper>
+        <Global />
+        <Header />
+        <Main>
+          <HSpacer />
+          <HTitle>Details</HTitle>
+          <HDescr>
+            Who are you? Where do you come from? Most important, what shall we
+            call you?
+          </HDescr>
+          <DetailsSection />
+          <Spacer />
+          <HTitle>Stats</HTitle>
+          <HDescr>How good are you in things?</HDescr>
+          <StatsSection />
+        </Main>
+      </Wrapper>
       <Explainer />
-    </Wrapper>
+    </>
   );
 }
 
