@@ -64,19 +64,21 @@ function App() {
 
   // const { hero, setName } = context;
   return (
-    <AppWrapper>
-      <Global />
-      <HeroHeader name={hero.name} />
-      <AppBody>
-        <AppHeader
-          title="Details"
-          description="Who are you? Where do you come from? Most important, what shall we call you?"
-        />
-        <DetailsSection />
-        <AppHeader title="Stats" description="How good are you in things?" />
-        <StatsSection />
-      </AppBody>
-    </AppWrapper>
+    <>
+      <AppWrapper>
+        <Global />
+        <HeroHeader />
+        <AppBody>
+          <AppHeader
+            title="Details"
+            description="Who are you? Where do you come from? Most important, what shall we call you?"
+          />
+          <DetailsSection />
+          <AppHeader title="Stats" description="How good are you in things?" />
+          <StatsSection />
+        </AppBody>
+      </AppWrapper>
+    </>
   );
 }
 

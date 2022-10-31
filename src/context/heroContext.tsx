@@ -1,5 +1,8 @@
 import * as React from "react";
 import { HeroContext, Hero } from "../types/hero";
+import { useDebounce } from "./hooks";
+import { DateTime } from "luxon";
+import { deepEqual, deepStrictEqual } from "assert";
 
 export const useHeroContext = () => {
   const heroContextI = React.useContext(heroContext);
@@ -18,6 +21,20 @@ const defaultHero = (): Hero => ({
   inventory: []
 });
 
+const savedOrDefaultHero = (): Hero => {
+  const savedHeroJSON = localStorage.getItem("hero");
+  if (!savedHeroJSON) {
+    return defaultHero();
+  } else {
+    try {
+      return JSON.parse(savedHeroJSON);
+    } catch (error) {
+      console.log("Error while loading hero:", error);
+      return defaultHero();
+    }
+  }
+};
+
 export const heroContext = React.createContext<HeroContext | undefined>(
   undefined
 );
@@ -25,7 +42,24 @@ export const heroContext = React.createContext<HeroContext | undefined>(
 const HeroProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
-  const [hero, setHero] = React.useState<Hero>(defaultHero());
+  const [hero, setHero] = React.useState<Hero>(savedOrDefaultHero());
+  const [changedBeforeSave, setChangedBeforeSave] = React.useState<
+    boolean | "no changes"
+  >("no changes");
+  const [savedTime, setSavedTime] = React.useState<luxon.DateTime>(
+    DateTime.now()
+  );
+  const debouncedHero = useDebounce(hero, 1000);
+
+  React.useEffect(() => {
+    setChangedBeforeSave(false);
+  }, [hero]);
+
+  React.useEffect(() => {
+    setSavedTime(DateTime.now());
+    setChangedBeforeSave(true);
+    localStorage.setItem("hero", JSON.stringify(debouncedHero));
+  }, [debouncedHero]);
 
   const setName = (name: string) => {
     setHero({ ...hero, name: name });
@@ -41,7 +75,16 @@ const HeroProvider: React.FC<{
   };
 
   return (
-    <heroContext.Provider value={{ hero, setName, setStory, setStat }}>
+    <heroContext.Provider
+      value={{
+        hero,
+        setName,
+        setStory,
+        setStat,
+        savedTime,
+        isSaved: changedBeforeSave === "no changes" ? true : changedBeforeSave
+      }}
+    >
       {children}
     </heroContext.Provider>
   );

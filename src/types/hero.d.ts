@@ -3,6 +3,8 @@ export type HeroContext = {
   setName: (string) => void;
   setStory: (string) => void;
   setStat: (string, number) => void;
+  savedTime: luxon.DateTime;
+  isSaved: boolean;
 };
 
 export type Hero = {
