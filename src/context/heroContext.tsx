@@ -34,8 +34,14 @@ const HeroProvider: React.FC<{
     setHero({ ...hero, story: story });
   };
 
+  const setStat = (stat: string, value: number) => {
+    if (!(value < 0) && !(value > 10)) {
+      setHero({ ...hero, stats: { ...hero.stats, [stat]: value } });
+    }
+  };
+
   return (
-    <heroContext.Provider value={{ hero, setName, setStory }}>
+    <heroContext.Provider value={{ hero, setName, setStory, setStat }}>
       {children}
     </heroContext.Provider>
   );

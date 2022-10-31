@@ -2,6 +2,7 @@ export type HeroContext = {
   hero: Hero;
   setName: (string) => void;
   setStory: (string) => void;
+  setStat: (string, number) => void;
 };
 
 export type Hero = {

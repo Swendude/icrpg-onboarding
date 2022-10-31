@@ -84,11 +84,11 @@ const StatEditor = ({
   return (
     <EditorBlock>
       <EditorTitle>{stat}</EditorTitle>
-      <ValueScale val={4} max={10} />
-      <EditorNumber>{4}</EditorNumber>
+      <ValueScale val={val} max={10} />
+      <EditorNumber>{val}</EditorNumber>
       <EditorButtonRow>
-        <EditorButton>-</EditorButton>
-        <EditorButton>+</EditorButton>
+        <EditorButton onClick={() => setStat(val - 1)}>-</EditorButton>
+        <EditorButton onClick={() => setStat(val + 1)}>+</EditorButton>
       </EditorButtonRow>
     </EditorBlock>
   );
@@ -113,11 +113,15 @@ const StatsBlockDescription = styled.p`
 `;
 
 const StatsSection = () => {
-  const { hero } = useHeroContext();
+  const { hero, setStat } = useHeroContext();
   return (
     <StatBlocks>
       <StatBlocksRow>
-        <StatEditor stat="STR" val={0} setStat={(n: number) => 0} />
+        <StatEditor
+          stat="STR"
+          val={hero.stats.STR}
+          setStat={(val) => setStat("STR", val)}
+        />
         <StatsBlockDescription>
           🗡 Put points into STR to create a melee fighter, a crusher, a
           bar-bending, boulder-throwing behemoth who smashes his way through
@@ -125,7 +129,11 @@ const StatsSection = () => {
         </StatsBlockDescription>
       </StatBlocksRow>
       <StatBlocksRow>
-        <StatEditor stat="DEX" val={0} setStat={(n: number) => 0} />
+        <StatEditor
+          stat="DEX"
+          val={hero.stats.DEX}
+          setStat={(val) => setStat("DEX", val)}
+        />
         <StatsBlockDescription>
           🏹 You'll be using DEX to make ranged attacks, like guns and bows. DEX
           is also a measure of how nimble you are, so you'll roll with that STAT
@@ -134,7 +142,7 @@ const StatsSection = () => {
         </StatsBlockDescription>
       </StatBlocksRow>
       <StatBlocksRow>
-        <StatEditor stat="CON" val={0} setStat={(n: number) => 0} />
+        <StatEditor stat="CON" val={0} setStat={(val) => setStat("CON", val)} />
         <StatsBlockDescription>
           ❤️ CON measures how stout or tough you are. This STAT is used when
           recovering HP, bracing for impact, or fighting to survive poison or
@@ -142,7 +150,7 @@ const StatsSection = () => {
         </StatsBlockDescription>
       </StatBlocksRow>
       <StatBlocksRow>
-        <StatEditor stat="WIS" val={0} setStat={(n: number) => 0} />
+        <StatEditor stat="WIS" val={0} setStat={(val) => setStat("WIS", val)} />
         <StatsBlockDescription>
           🧠 This STAT measures an intuitive, organic kind of smarts. It isn’t
           so much know- ing as it is feeling. How keen is your sixth sense?
@@ -151,7 +159,7 @@ const StatsSection = () => {
         </StatsBlockDescription>
       </StatBlocksRow>
       <StatBlocksRow>
-        <StatEditor stat="CHA" val={0} setStat={(n: number) => 0} />
+        <StatEditor stat="CHA" val={0} setStat={(val) => setStat("CHA", val)} />
         <StatsBlockDescription>
           🗣 Your strength of will is measured by CHARISMA. You’ll be using this
           to roll for persuasive actions, to resist fear, or drive enemies back
@@ -159,7 +167,7 @@ const StatsSection = () => {
         </StatsBlockDescription>
       </StatBlocksRow>
       <StatBlocksRow>
-        <StatEditor stat="INT" val={0} setStat={(n: number) => 0} />
+        <StatEditor stat="INT" val={0} setStat={(val) => setStat("INT", val)} />
         <StatsBlockDescription>
           📖 Some heroes use wits over fists. Their key STAT is INT, which is
           used to cast SPELLS, investigate mysteries, recall details, or operate
