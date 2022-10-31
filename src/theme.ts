@@ -1,10 +1,10 @@
 import { DefaultTheme } from "styled-components";
 
-export const defaultTheme: DefaultTheme = {
-  borderRadius: "5px",
-  borderRadiusTop: `5px 5px 0 0`,
-  borderRadiusBottom: `0 0 5px 5px`,
-  borderRadiusLeft: `5px 0 0 5px`,
+const makeDefaultTheme = (borderRadius: number) => ({
+  borderRadius: `${borderRadius}px`,
+  borderRadiusTop: `${borderRadius}px ${borderRadius}px 0 0`,
+  borderRadiusBottom: `0 0 ${borderRadius}px ${borderRadius}px`,
+  borderRadiusLeft: `${borderRadius}px 0 0 ${borderRadius}px`,
   palette: {
     common: {
       foreground: "#cccccc",
@@ -12,4 +12,6 @@ export const defaultTheme: DefaultTheme = {
       text: "#e5e5e5"
     }
   }
-};
+});
+
+export const defaultTheme: DefaultTheme = makeDefaultTheme(7);

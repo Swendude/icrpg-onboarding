@@ -4,10 +4,10 @@ import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
 const HeaderContainer = styled.div`
   width: 100%;
-  padding: 1rem;
-  padding-left: 2.5rem;
-  padding-bottom: 1.2rem;
+  padding: 1.2rem 2.5rem;
   border-radius: ${(props) => props.theme.borderRadiusTop};
+  display: flex;
+  justify-content: space-between;
 `;
 
 const HeroName = styled.h1`
@@ -16,6 +16,9 @@ const HeroName = styled.h1`
 
 const SavedName = styled.p`
   font-style: italic;
+  font-size: 1rem;
+  opacity: 0.2;
+  align-self: flex-end;
 `;
 const HeroHeader = () => {
   const { isSaved, hero } = useHeroContext();
@@ -25,7 +28,7 @@ const HeroHeader = () => {
       <HeroName>
         ⚔️ {hero.name.length > 0 ? hero.name : "Unnamed hero"}
       </HeroName>
-      <SavedName>{`Hero saved: ${isSaved}`}</SavedName>
+      <SavedName>{isSaved ? "Hero saved" : "Hero saving soon"}</SavedName>
     </HeaderContainer>
   );
 };
