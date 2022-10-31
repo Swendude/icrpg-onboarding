@@ -67,7 +67,7 @@ const ValueScale = ({ val, max }: { val: number; max: number }) => {
   return (
     <BlockRow>
       {[...new Array(max)].map((_, i) =>
-        i < val ? <FilledBlock /> : <EmptyBlock />
+        i < val ? <FilledBlock key={i} /> : <EmptyBlock key={i} />
       )}
     </BlockRow>
   );
