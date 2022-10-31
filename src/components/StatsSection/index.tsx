@@ -3,23 +3,15 @@ import styled from "styled-components";
 import { StatKey } from "../../context/hero";
 import { useAppContext } from "../../context/appContext";
 
-const EditorBlock = styled.div`
+const ButtonRow = styled.div`
   display: flex;
-  align-items: center;
-  padding: 1rem;
-  border: solid 1px;
-  border-radius: ${(props) => props.theme.borderRadius};
-  border-color: ${(props) => props.theme.palette.common.text};
+  gap: 1rem;
 `;
 
-const EditorButtonRow = styled.div`
-  display: flex;
-  gap: 2rem;
-`;
-const EditorButton = styled.button`
-  aspect-ratio: 1;
-  width: 3rem;
-  font-size: 2rem;
+const Button = styled.button`
+  height: 4rem;
+  width: 4rem;
+  font-size: 2.5rem;
   background-color: ${(props) => props.theme.palette.common.text};
   color: ${(props) => props.theme.palette.common.background};
   border: 1px solid ${(props) => props.theme.palette.common.text};
@@ -34,6 +26,8 @@ const EditorButton = styled.button`
 
 const EditorNumber = styled.span`
   margin: 0;
+  flex-grow: 2;
+  text-align: center;
   padding: 1rem;
   font-weight: 800;
   color: ${(props) => props.theme.palette.common.text};
@@ -43,74 +37,40 @@ const EditorTitle = styled.h3`
   border-radius: ${(props) => props.theme.borderRadiusLeft};
   background-color: ${(props) => props.theme.palette.common.background};
   color: ${(props) => props.theme.palette.common.text};
-  margin: 1rem;
 `;
-
-const EmptyBlock = styled.div`
-  aspect-ratio: 1;
-  width: 1.8rem;
-  border: solid 1px;
-  border-color: ${(props) => props.theme.palette.common.text};
-  border-radius: ${(props) => props.theme.borderRadius};
-`;
-
-const FilledBlock = styled(EmptyBlock)`
-  border-color: ${(props) => props.theme.palette.common.text};
-  background-color: ${(props) => props.theme.palette.common.text};
-`;
-
-const BlockRow = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
-const ValueScale = ({ val, max }: { val: number; max: number }) => {
-  return (
-    <BlockRow>
-      {[...new Array(max)].map((_, i) =>
-        i < val ? <FilledBlock key={i} /> : <EmptyBlock key={i} />
-      )}
-    </BlockRow>
-  );
-};
 
 const StatEditor = ({ stat }: { stat: StatKey }) => {
   const { hero, setStat } = useHeroContext();
   const { showModal } = useAppContext();
   return (
-    <EditorBlock>
+    <Wrapper>
       <EditorTitle>{stat}</EditorTitle>
       <HelpButton onClick={() => showModal(stat)}>?</HelpButton>
-      {/* <ValueScale val={hero.stats[stat]} max={10} /> */}
       <EditorNumber>{hero.stats[stat]}</EditorNumber>
-      <EditorButtonRow>
-        <EditorButton onClick={() => setStat(stat, hero.stats[stat] - 1)}>
-          -
-        </EditorButton>
-        <EditorButton onClick={() => setStat(stat, hero.stats[stat] + 1)}>
-          +
-        </EditorButton>
-      </EditorButtonRow>
-    </EditorBlock>
+      <ButtonRow>
+        <Button onClick={() => setStat(stat, hero.stats[stat] - 1)}>+</Button>
+        <Button onClick={() => setStat(stat, hero.stats[stat] + 1)}>-</Button>
+      </ButtonRow>
+    </Wrapper>
   );
 };
 
 const StatBlocks = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 2rem;
 `;
 
-const StatBlocksRow = styled.div`
+const Wrapper = styled.div`
+  flex: 1 1 20rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-items: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  padding: 1rem;
+  border: solid 1px;
+  border-radius: ${(props) => props.theme.borderRadiusTop};
+  border-color: ${(props) => props.theme.palette.common.text};
+  justify-content: space-between;
 `;
-
-const StatsBlockTitle = styled.h3``;
 
 const HelpButton = styled.button`
   border-style: solid;
@@ -121,6 +81,7 @@ const HelpButton = styled.button`
   border-width: 1px;
   width: 2.4rem;
   height: 2.4rem;
+  margin: 0 0 0 0.5rem;
   cursor: pointer;
 `;
 

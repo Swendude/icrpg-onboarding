@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { useAppContext } from "../../context/appContext";
 import modalInfos, { ModalInfos } from "../../data/modalInfo";
@@ -60,7 +59,6 @@ const Closer = styled.button`
 `;
 const Explainer = () => {
   const { state, hideModal } = useAppContext();
-  const [toggle, setToggle] = useState<boolean>(true);
   return (
     <Background className={state.showModal ? "show" : ""}>
       <Modal>
