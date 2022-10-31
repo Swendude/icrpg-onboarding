@@ -8,10 +8,7 @@ const HeaderContainer = styled.div`
   border-radius: ${(props) => props.theme.borderRadiusTop};
 `;
 
-const HeroName = styled.h2`
-  margin: 0px;
-  padding: 0px;
-  font-size: 2rem;
+const HeroName = styled.h1`
   color: ${(props) => props.theme.palette.common.text};
 `;
 const HeroHeader = ({ name }: { name: string }) => (

@@ -1,7 +1,5 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 import HeroHeader from "./components/HeroHeader";
-import TabChoice from "./components/TabChoice";
 import { useHeroContext } from "./context/heroContext";
 import DetailsSection from "./sections/DetailsSection";
 import { createGlobalStyle } from "styled-components";
@@ -11,6 +9,7 @@ const Global = createGlobalStyle`
   body {
     background-color: ${(props) => props.theme.palette.common.background};
     color: ${(props) => props.theme.palette.common.text};
+    font-size: 1.4rem;
     }
 `;
 
@@ -34,17 +33,11 @@ const AppBody = styled.div`
   flex-direction: column;
 `;
 
-const HeaderTitle = styled.h4`
-  margin: 0;
-  padding: 0;
-  font-size: 1.6rem;
+const HeaderTitle = styled.h2`
   color: ${(props) => props.theme.palette.common.foreground};
 `;
 
 const HeaderDescr = styled.p`
-  margin: 0;
-  padding: 0;
-  font-size: 1.4rem;
   color: ${(props) => props.theme.palette.common.foreground};
   font-style: italic;
 `;

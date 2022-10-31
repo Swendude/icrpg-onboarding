@@ -13,6 +13,8 @@ export type Hero = {
   inventory: Item[];
 };
 
+export type StatKey = keyof Stats;
+
 type Stats = {
   STR: number;
   DEX: number;
