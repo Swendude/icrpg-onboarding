@@ -4,6 +4,7 @@ import DetailsSection from "./components/DetailsSection";
 import { createGlobalStyle } from "styled-components";
 import StatsSection from "./components/StatsSection";
 import Explainer from "./components/Explainer";
+import HelpButton from "./components/HelpButton";
 
 const Global = createGlobalStyle`
   body {
@@ -34,13 +35,14 @@ const Main = styled.div`
   flex-direction: column;
 `;
 
-const HTitle = styled.h2`
+const HTitleText = styled.h2`
   color: ${(props) => props.theme.palette.common.foreground};
 `;
 
 const HDescr = styled.p`
   color: ${(props) => props.theme.palette.common.foreground};
   font-style: italic;
+  margin-bottom: 1rem;
 `;
 
 const Spacer = styled.div`
@@ -59,9 +61,6 @@ const HSpacer = styled(Spacer)`
 `;
 
 function App() {
-  // const { hero } = useHeroContext();
-
-  // const { hero, setName } = context;
   return (
     <>
       <Wrapper>
@@ -69,15 +68,20 @@ function App() {
         <Header />
         <Main>
           <HSpacer />
-          <HTitle>Details</HTitle>
+          <HTitleText>Details</HTitleText>
           <HDescr>
             Who are you? Where do you come from? Most important, what shall we
             call you?
           </HDescr>
           <DetailsSection />
           <Spacer />
-          <HTitle>Stats</HTitle>
-          <HDescr>How good are you in things?</HDescr>
+          <HelpButton keyVal={"STATS"}>
+            <HTitleText>Stats</HTitleText>
+          </HelpButton>
+          <HDescr>
+            What is your expertise? Are you an intelligent wizard or a legendary
+            barbarian?
+          </HDescr>
           <StatsSection />
         </Main>
       </Wrapper>

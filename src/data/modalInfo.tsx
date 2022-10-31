@@ -28,6 +28,11 @@ const modalInfos = {
     title: "📖 Intelligence",
     descr:
       "Some heroes use wits over fists. Their key STAT is INT, which is used to cast SPELL investigate mysteries, recall details, or operate complex machinery."
+  },
+  STATS: {
+    title: "👤 Stats",
+    descr:
+      "Characters have a set of STATS that describe their capability in different areas. Depending on what’s being tried, you’ll almost always get to add the value of one STAT to your D20."
   }
 };
 

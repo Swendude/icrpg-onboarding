@@ -1,7 +1,7 @@
 import { useHeroContext } from "../../context/heroContext";
 import styled from "styled-components";
 import { StatKey } from "../../context/hero";
-import { useAppContext } from "../../context/appContext";
+import HelpButton from "../HelpButton";
 
 const ButtonRow = styled.div`
   display: flex;
@@ -26,30 +26,39 @@ const Button = styled.button`
 
 const EditorNumber = styled.span`
   margin: 0;
-  flex-grow: 2;
+  border-radius: ${(props) => props.theme.borderRadius};
+  width: 4.5rem;
+  height: 4.5rem;
   text-align: center;
   padding: 1rem;
   font-weight: 800;
+  font-size: 2rem;
+  background-color: ${(props) => props.theme.palette.common.background};
   color: ${(props) => props.theme.palette.common.text};
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${(props) => props.theme.palette.common.text};
 `;
 
 const EditorTitle = styled.h3`
   border-radius: ${(props) => props.theme.borderRadiusLeft};
   background-color: ${(props) => props.theme.palette.common.background};
   color: ${(props) => props.theme.palette.common.text};
+  font-size: 3rem;
 `;
 
 const StatEditor = ({ stat }: { stat: StatKey }) => {
   const { hero, setStat } = useHeroContext();
-  const { showModal } = useAppContext();
+
   return (
     <Wrapper>
-      <EditorTitle>{stat}</EditorTitle>
-      <HelpButton onClick={() => showModal(stat)}>?</HelpButton>
+      <HelpButton keyVal={stat}>
+        <EditorTitle>{stat}</EditorTitle>
+      </HelpButton>
       <EditorNumber>{hero.stats[stat]}</EditorNumber>
       <ButtonRow>
-        <Button onClick={() => setStat(stat, hero.stats[stat] - 1)}>+</Button>
-        <Button onClick={() => setStat(stat, hero.stats[stat] + 1)}>-</Button>
+        <Button onClick={() => setStat(stat, hero.stats[stat] + 1)}>+</Button>
+        <Button onClick={() => setStat(stat, hero.stats[stat] - 1)}>-</Button>
       </ButtonRow>
     </Wrapper>
   );
@@ -62,7 +71,7 @@ const StatBlocks = styled.div`
 `;
 
 const Wrapper = styled.div`
-  flex: 1 1 20rem;
+  flex: 1 1 30rem;
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -70,19 +79,6 @@ const Wrapper = styled.div`
   border-radius: ${(props) => props.theme.borderRadiusTop};
   border-color: ${(props) => props.theme.palette.common.text};
   justify-content: space-between;
-`;
-
-const HelpButton = styled.button`
-  border-style: solid;
-  background-color: ${(props) => props.theme.palette.common.background};
-  color: ${(props) => props.theme.palette.common.text};
-  border-color: ${(props) => props.theme.palette.common.text};
-  border-radius: 15px;
-  border-width: 1px;
-  width: 2.4rem;
-  height: 2.4rem;
-  margin: 0 0 0 0.5rem;
-  cursor: pointer;
 `;
 
 const StatsSection = () => {

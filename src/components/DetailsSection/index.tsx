@@ -5,7 +5,6 @@ import styled from "styled-components";
 export const FormBlock = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 2.5rem;
   width: 100%;
   border-radius: ${(props) => props.theme.borderRadius};
   overflow: hidden;
