@@ -6,8 +6,8 @@ export const FormBlock = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-radius: ${(props) => props.theme.borderRadius};
   overflow: hidden;
+  margin-bottom: 2rem;
 `;
 
 export const FormLabel = styled.label`
@@ -27,7 +27,6 @@ export const FormInputText = styled.textarea`
   resize: none;
   background-color: ${(props) => props.theme.palette.common.foreground};
   color: ${(props) => props.theme.palette.common.background};
-  border-radius: ${(props) => props.theme.borderRadiusBottom};
   border-color: ${(props) => props.theme.palette.common.foreground};
   outline: 0;
   padding: 1rem;
