@@ -6,6 +6,7 @@ import StatsSection from "./components/StatsSection";
 import Explainer from "./components/Explainer";
 import HelpButton from "./components/HelpButton";
 import Footer from "./components/Footer";
+import HyperLinkedText from "./components/HyperLinkedText";
 
 const Global = createGlobalStyle`
   body {
@@ -75,8 +76,11 @@ function App() {
           <HSpacer />
           <HTitleText>Details</HTitleText>
           <HDescr>
-            Who are you? Where do you come from? Most important, what shall we
-            call you?
+            <HyperLinkedText
+              text={
+                "Who are you? Where do you come from? Most important, what shall we call you?"
+              }
+            />
           </HDescr>
           <DetailsSection />
           <Spacer />
@@ -84,8 +88,11 @@ function App() {
             <HTitleText>Stats</HTitleText>
           </HelpButton>
           <HDescr>
-            What is your expertise? Are you an intelligent wizard or a legendary
-            barbarian?
+            <HyperLinkedText
+              text={
+                "What is your expertise? Are you an intelligent wizard or a legendary barbarian? You'll add the value of these STATS to the result of a D20 roll."
+              }
+            />
           </HDescr>
           <StatsSection />
         </Main>
