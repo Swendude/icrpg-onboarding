@@ -67,7 +67,7 @@ const modalInfos = {
   D20: {
     title: "🎲 20 Sided Dice",
     descr:
-      "The D20 is the main dice you will use to perform checks. Roll the bones, pray to the fates and hit those sweet natural 20s!"
+      "The D20 is the main dice you will use to perform checks in combination with STATS. Roll the bones, pray to the fates and hit those sweet natural 20s!"
   }
 };
 export type InfoKeys = keyof ModalInfos;

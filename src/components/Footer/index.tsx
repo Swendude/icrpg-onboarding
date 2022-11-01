@@ -8,11 +8,14 @@ const Wrapper = styled.div`
   align-items: center;
   padding-bottom: 1rem;
 `;
+const Text = styled.p`
+  text-align: center;
+`;
 
 const Footer = () => {
   return (
     <Wrapper>
-      <p>
+      <Text>
         Made{" "}
         <a
           target="_blank"
@@ -30,7 +33,7 @@ const Footer = () => {
           ICRPG
         </a>
         !
-      </p>
+      </Text>
     </Wrapper>
   );
 };

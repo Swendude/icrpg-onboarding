@@ -20,7 +20,8 @@ const Background = styled.div`
 `;
 
 const Modal = styled.div`
-  width: 30rem;
+  min-width: 30rem;
+  max-width: 70vw;
   display: flex;
   flex-direction: column;
   padding: 1rem 4rem;

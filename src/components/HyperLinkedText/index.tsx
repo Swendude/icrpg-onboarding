@@ -9,6 +9,8 @@ const Link = styled.span`
 `;
 
 const HyperLinkedText = ({ text }: { text: string }) => {
+  // TODO: exclude punctuation from hyperlinks
+
   const { showModal } = useAppContext();
   const punctRe = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
   const words = text.split(" ");

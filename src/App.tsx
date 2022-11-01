@@ -23,14 +23,21 @@ const Global = createGlobalStyle`
 const Wrapper = styled.div`
   max-width: 88vw;
   margin: 0 auto;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
   min-height: 96vh;
   border: 5px solid;
   border-color: ${(props) => props.theme.palette.common.text};
   border-radius: ${(props) => props.theme.borderRadiusTop};
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 640px) {
+    margin-top: 0;
+    max-width: 100vw;
+    border: none;
+  }
 `;
 
 const Main = styled.div`
