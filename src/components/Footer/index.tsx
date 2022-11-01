@@ -21,7 +21,15 @@ const Footer = () => {
         >
           open-source
         </a>{" "}
-        with ❤️ and React
+        with ❤️ and React. For use with{" "}
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://hankerinferinale.wixsite.com/icrpg"
+        >
+          ICRPG
+        </a>
+        !
       </p>
     </Wrapper>
   );
