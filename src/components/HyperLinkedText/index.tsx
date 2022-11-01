@@ -16,10 +16,14 @@ const HyperLinkedText = ({ text }: { text: string }) => {
   const words = text.split(" ");
   return (
     <span>
-      {words.map((word) => {
+      {words.map((word, i) => {
         if (Object.keys(modalInfos).includes(word.replace(punctRe, ""))) {
           const key: InfoKeys = word.replace(punctRe, "") as InfoKeys;
-          return <Link onClick={() => showModal(key)}>{word}</Link>;
+          return (
+            <Link key={i} onClick={() => showModal(key)}>
+              {word}
+            </Link>
+          );
         } else {
           return ` ${word} `;
         }
