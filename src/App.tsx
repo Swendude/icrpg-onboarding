@@ -2,12 +2,12 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import DetailsSection from "./components/DetailsSection";
 import { createGlobalStyle } from "styled-components";
-import StatsSection from "./components/StatsSection";
 import Explainer from "./components/Explainer";
 import HelpButton from "./components/HelpButton";
 import Footer from "./components/Footer";
 import HyperLinkedText from "./components/HyperLinkedText";
-import EffortSection from "./components/EffortSection";
+import { useHeroContext } from "./context/heroContext";
+import NumAttrSection from "./components/NumAttrSection";
 
 const Global = createGlobalStyle`
   body {
@@ -75,6 +75,7 @@ const HSpacer = styled(Spacer)`
 `;
 
 function App() {
+  const { hero, setStat, setEffort } = useHeroContext();
   return (
     <>
       <Wrapper>
@@ -102,7 +103,7 @@ function App() {
               }
             />
           </HDescr>
-          <StatsSection />
+          <NumAttrSection attrObj={hero.stats} setter={setStat} />
           <Spacer />
           <HelpButton keyVal={"EFFORT"}>
             <HTitleText>Effort</HTitleText>
@@ -114,7 +115,7 @@ function App() {
               }
             />
           </HDescr>
-          <EffortSection />
+          <NumAttrSection attrObj={hero.effort} setter={setEffort} />
         </Main>
       </Wrapper>
       <Explainer />

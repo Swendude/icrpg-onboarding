@@ -1,8 +1,5 @@
-import { useHeroContext } from "../../context/heroContext";
 import styled from "styled-components";
-import { EffortKey, NumericalKey, StatKey } from "../../types/hero";
 import HelpButton from "../HelpButton";
-import { FC } from "react";
 
 const ButtonRow = styled.div`
   display: flex;
@@ -59,23 +56,27 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-type Props = {
-  attr: EffortKey | StatKey;
+function NumAttrEditor<KType>({
+  attr,
+  value,
+  setter
+}: {
+  attr: KType;
   value: number;
-  setter: (attr: NumericalKey, n: number) => void;
-};
+  setter: (key: KType, n: number) => void;
+}) {
+  return (
+    <Wrapper>
+      <HelpButton keyVal={attr}>
+        <EditorTitle>{attr as String}</EditorTitle>
+      </HelpButton>
+      <EditorNumber>{value}</EditorNumber>
+      <ButtonRow>
+        <Button onClick={() => setter(attr, value + 1)}>+</Button>
+        <Button onClick={() => setter(attr, value - 1)}>-</Button>
+      </ButtonRow>
+    </Wrapper>
+  );
+}
 
-const NumericalAttributeEditor = ({ attr, value, setter }: Props) => (
-  <Wrapper>
-    <HelpButton keyVal={attr}>
-      <EditorTitle>{attr}</EditorTitle>
-    </HelpButton>
-    <EditorNumber>{value}</EditorNumber>
-    <ButtonRow>
-      <Button onClick={() => setter(attr, value + 1)}>+</Button>
-      <Button onClick={() => setter(attr, value - 1)}>-</Button>
-    </ButtonRow>
-  </Wrapper>
-);
-
-export default NumericalAttributeEditor;
+export default NumAttrEditor;

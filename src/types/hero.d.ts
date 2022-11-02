@@ -31,8 +31,6 @@ type Effort = {
 
 export type EffortKey = keyof Effort;
 
-export type NumericalKey = EffortKey | StatKey;
-
 type Item = {
   name: string;
   description: string;

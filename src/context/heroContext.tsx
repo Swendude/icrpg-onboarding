@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Hero, StatKey, EffortKey, NumericalKey } from "../types/hero";
+import { Hero, StatKey, EffortKey } from "../types/hero";
 import { useDebounce } from "./hooks";
 import { DateTime } from "luxon";
 
@@ -7,8 +7,8 @@ export type HeroContext = {
   hero: Hero;
   setName: (v: string) => void;
   setStory: (v: string) => void;
-  setStat: (k: NumericalKey, v: number) => void;
-  setEffort: (k: NumericalKey, v: number) => void;
+  setStat: (k: StatKey, v: number) => void;
+  setEffort: (k: EffortKey, v: number) => void;
   savedTime: luxon.DateTime;
   isSaved: boolean;
 };
@@ -77,13 +77,13 @@ const HeroProvider: React.FC<{
     setHero({ ...hero, story: story });
   };
 
-  const setStat = (stat: NumericalKey, value: number) => {
+  const setStat = (stat: StatKey, value: number) => {
     if (!(value < 0) && !(value > 10)) {
       setHero({ ...hero, stats: { ...hero.stats, [stat]: value } });
     }
   };
 
-  const setEffort = (effort: NumericalKey, value: number) => {
+  const setEffort = (effort: EffortKey, value: number) => {
     if (!(value < 0) && !(value > 10)) {
       setHero({ ...hero, effort: { ...hero.effort, [effort]: value } });
     }
