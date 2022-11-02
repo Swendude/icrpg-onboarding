@@ -1,15 +1,12 @@
 import styled from "styled-components";
 import NumAttrEditor from "../NumAttrEditor";
-
+import { objKeys } from "../../utils/helpers";
 const Editors = styled.div`
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
   gap: 2rem;
 `;
-
-function ObjKeys<Obj extends {}>(obj: Obj): (keyof Obj)[] {
-  return Object.keys(obj) as (keyof Obj)[];
-}
 
 function NumAttrSection<KType extends string>({
   attrObj,
@@ -20,7 +17,7 @@ function NumAttrSection<KType extends string>({
 }) {
   return (
     <Editors>
-      {ObjKeys(attrObj).map((k) => (
+      {objKeys(attrObj).map((k) => (
         <NumAttrEditor attr={k} value={attrObj[k]} setter={setter} />
       ))}
     </Editors>

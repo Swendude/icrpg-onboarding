@@ -80,7 +80,7 @@ const Explainer = () => {
           <>SOMETHING WENT WRONG!</>
         )}
 
-        <Closer onClick={() => hideModal()}>X</Closer>
+        <Closer onClick={() => hideModal()}>✕</Closer>
       </Modal>
     </Background>
   );

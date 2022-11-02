@@ -3,57 +3,77 @@ import HelpButton from "../HelpButton";
 
 const ButtonRow = styled.div`
   display: flex;
-  gap: 1rem;
-`;
 
-const Button = styled.button`
-  height: 4rem;
-  width: 4rem;
-  font-size: 2.5rem;
-  background-color: ${(props) => props.theme.palette.common.text};
-  color: ${(props) => props.theme.palette.common.background};
-  border: 1px solid ${(props) => props.theme.palette.common.text};
-  border-radius: ${(props) => props.theme.borderRadius};
-
-  cursor: pointer;
-  :hover {
-    background-color: ${(props) => props.theme.palette.common.background};
-    color: ${(props) => props.theme.palette.common.text};
+  & :first-child {
+    border-width: 0 0px 1px 1px;
   }
 `;
 
-const EditorNumber = styled.span`
-  margin: 0;
+const Button = styled.button`
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  background-color: ${(props) => props.theme.palette.common.background};
+  color: ${(props) => props.theme.palette.common.text};
+  border-color: ${(props) => props.theme.palette.common.text};
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  cursor: pointer;
+
+  :hover {
+    background-color: ${(props) => props.theme.palette.common.text};
+    color: ${(props) => props.theme.palette.common.background};
+  }
+`;
+
+const NumberWrapper = styled.div`
   border-radius: ${(props) => props.theme.borderRadius};
   width: 4.5rem;
   height: 4.5rem;
-  text-align: center;
-  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.theme.palette.common.foreground};
+  margin-bottom: 1rem;
+`;
+
+const Number = styled.span`
+  font-size: 2.5rem;
+  color: ${(props) => props.theme.palette.common.background};
   font-weight: 800;
-  font-size: 2rem;
-  background-color: ${(props) => props.theme.palette.common.background};
+`;
+
+const TitleWrapper = styled.div`
   color: ${(props) => props.theme.palette.common.text};
-  border-width: 1px;
-  border-style: solid;
-  border-color: ${(props) => props.theme.palette.common.text};
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  border-style: dashed;
+  border-width: 1px 0 0 0;
+  width: 100%;
 `;
 
 const EditorTitle = styled.h3`
-  border-radius: ${(props) => props.theme.borderRadiusLeft};
-  background-color: ${(props) => props.theme.palette.common.background};
-  color: ${(props) => props.theme.palette.common.text};
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+`;
+
+const InnerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  border-color: ${(props) => props.theme.palette.common.text};
+  border-radius: ${(props) => props.theme.borderRadiusTop};
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
 `;
 
 const Wrapper = styled.div`
-  flex: 1 1 45%;
   display: flex;
-  align-items: center;
-  padding: 1rem;
-  border: solid 1px;
-  border-radius: ${(props) => props.theme.borderRadiusTop};
-  border-color: ${(props) => props.theme.palette.common.text};
-  justify-content: space-between;
+  flex-direction: column;
+  min-width: 14rem;
 `;
 
 function NumAttrEditor<KType>({
@@ -67,13 +87,19 @@ function NumAttrEditor<KType>({
 }) {
   return (
     <Wrapper>
-      <HelpButton keyVal={attr}>
-        <EditorTitle>{attr as String}</EditorTitle>
-      </HelpButton>
-      <EditorNumber>{value}</EditorNumber>
+      <InnerWrapper>
+        <NumberWrapper>
+          <Number>{value}</Number>
+        </NumberWrapper>
+        <TitleWrapper>
+          <HelpButton keyVal={attr}>
+            <EditorTitle>{attr as String}</EditorTitle>
+          </HelpButton>
+        </TitleWrapper>
+      </InnerWrapper>
       <ButtonRow>
-        <Button onClick={() => setter(attr, value + 1)}>+</Button>
-        <Button onClick={() => setter(attr, value - 1)}>-</Button>
+        <Button onClick={() => setter(attr, value + 1)}>＋</Button>
+        <Button onClick={() => setter(attr, value - 1)}>－</Button>
       </ButtonRow>
     </Wrapper>
   );

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { ModalInfos } from "../data/modalInfo";
-
+import modalInfos, { ModalInfos } from "../data/modalInfo";
+import { objKeys } from "../utils/helpers";
 type AppState = { showModal: boolean; modalInfoKey: string | null };
 
 type AppContext = {
@@ -29,7 +29,9 @@ const AppProvider: React.FC<{
   });
 
   const showModal = (key: keyof ModalInfos) => {
-    setAppState({ showModal: true, modalInfoKey: key });
+    if (objKeys(modalInfos).includes(key)) {
+      setAppState({ showModal: true, modalInfoKey: key });
+    }
   };
 
   const hideModal = () => setAppState({ showModal: false, modalInfoKey: null });
