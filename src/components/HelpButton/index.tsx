@@ -22,20 +22,20 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const HelpButton = ({
+function HelpButton<KType>({
   keyVal,
   children
 }: {
-  keyVal: keyof ModalInfos;
+  keyVal: KType;
   children?: ReactNode;
-}) => {
+}) {
   const { showModal } = useAppContext();
   return (
     <Wrapper>
       {children}
-      <Button onClick={() => showModal(keyVal)}>?</Button>
+      <Button onClick={() => showModal(keyVal as keyof ModalInfos)}>?</Button>
     </Wrapper>
   );
-};
+}
 
 export default HelpButton;

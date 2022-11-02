@@ -12,10 +12,10 @@ const HeroName = styled.h1`
   color: ${(props) => props.theme.palette.common.text};
 `;
 
-const SavedName = styled.p`
+const SavedStatus = styled.p`
   font-style: italic;
   font-size: 1rem;
-  opacity: 0.2;
+  opacity: 0.6;
   align-self: flex-end;
 `;
 const HeroHeader = () => {
@@ -26,7 +26,9 @@ const HeroHeader = () => {
       <HeroName>
         ⚔️ {hero.name.length > 0 ? hero.name : "Unnamed hero"}
       </HeroName>
-      <SavedName>{isSaved ? "Hero saved" : "Hero saving soon"}</SavedName>
+      <SavedStatus>
+        {isSaved ? "● Hero saved" : "○ Hero saving soon"}
+      </SavedStatus>
     </HeaderContainer>
   );
 };

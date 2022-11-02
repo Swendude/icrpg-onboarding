@@ -1,7 +1,17 @@
 import * as React from "react";
-import { HeroContext, Hero } from "./hero";
+import { Hero, StatKey, EffortKey, NumericalKey } from "../types/hero";
 import { useDebounce } from "./hooks";
 import { DateTime } from "luxon";
+
+export type HeroContext = {
+  hero: Hero;
+  setName: (v: string) => void;
+  setStory: (v: string) => void;
+  setStat: (k: NumericalKey, v: number) => void;
+  setEffort: (k: NumericalKey, v: number) => void;
+  savedTime: luxon.DateTime;
+  isSaved: boolean;
+};
 
 export const useHeroContext = () => {
   const heroContextI = React.useContext(heroContext);
@@ -67,9 +77,15 @@ const HeroProvider: React.FC<{
     setHero({ ...hero, story: story });
   };
 
-  const setStat = (stat: string, value: number) => {
+  const setStat = (stat: NumericalKey, value: number) => {
     if (!(value < 0) && !(value > 10)) {
       setHero({ ...hero, stats: { ...hero.stats, [stat]: value } });
+    }
+  };
+
+  const setEffort = (effort: NumericalKey, value: number) => {
+    if (!(value < 0) && !(value > 10)) {
+      setHero({ ...hero, effort: { ...hero.effort, [effort]: value } });
     }
   };
 
@@ -80,6 +96,7 @@ const HeroProvider: React.FC<{
         setName,
         setStory,
         setStat,
+        setEffort,
         savedTime,
         isSaved: changedBeforeSave === "no changes" ? true : changedBeforeSave
       }}

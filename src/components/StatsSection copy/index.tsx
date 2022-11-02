@@ -1,8 +1,10 @@
 import { useHeroContext } from "../../context/heroContext";
 import styled from "styled-components";
+import { StatKey } from "../../types/hero";
+import HelpButton from "../HelpButton";
 import NumericalAttributeEditor from "../NumericalAttributeEditor";
 
-const Wrapper = styled.div`
+const StatBlocks = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -11,7 +13,7 @@ const Wrapper = styled.div`
 const StatsSection = () => {
   const { hero, setStat } = useHeroContext();
   return (
-    <Wrapper>
+    <StatBlocks>
       <NumericalAttributeEditor
         attr="STR"
         value={hero.stats.STR}
@@ -42,7 +44,7 @@ const StatsSection = () => {
         value={hero.stats.INT}
         setter={setStat}
       />
-    </Wrapper>
+    </StatBlocks>
   );
 };
 

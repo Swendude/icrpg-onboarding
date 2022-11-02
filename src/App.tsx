@@ -7,6 +7,7 @@ import Explainer from "./components/Explainer";
 import HelpButton from "./components/HelpButton";
 import Footer from "./components/Footer";
 import HyperLinkedText from "./components/HyperLinkedText";
+import EffortSection from "./components/EffortSection";
 
 const Global = createGlobalStyle`
   body {
@@ -102,6 +103,18 @@ function App() {
             />
           </HDescr>
           <StatsSection />
+          <Spacer />
+          <HelpButton keyVal={"EFFORT"}>
+            <HTitleText>Effort</HTitleText>
+          </HelpButton>
+          <HDescr>
+            <HyperLinkedText
+              text={
+                "Are you willing to put in the sweat? How good are you at making progress, EFFORT will determine the succes rate of your actions!"
+              }
+            />
+          </HDescr>
+          <EffortSection />
         </Main>
       </Wrapper>
       <Explainer />

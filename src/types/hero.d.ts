@@ -1,12 +1,3 @@
-export type HeroContext = {
-  hero: Hero;
-  setName: (string) => void;
-  setStory: (string) => void;
-  setStat: (string, number) => void;
-  savedTime: luxon.DateTime;
-  isSaved: boolean;
-};
-
 export type Hero = {
   name: string;
   story: string;
@@ -37,6 +28,10 @@ type Effort = {
   MAGIC: number;
   ULTIMATE: number;
 };
+
+export type EffortKey = keyof Effort;
+
+export type NumericalKey = EffortKey | StatKey;
 
 type Item = {
   name: string;

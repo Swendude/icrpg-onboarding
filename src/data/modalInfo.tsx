@@ -67,7 +67,22 @@ const modalInfos = {
   D20: {
     title: "🎲 20 Sided Dice",
     descr:
-      "The D20 is the main dice you will use to perform checks in combination with STATS. Roll the bones, pray to the fates and hit those sweet natural 20s!"
+      "The D20 is the main dice you will use to perform ATTEMPTS in combination with STATS. Roll the bones, pray to the fates and hit those sweet natural 20s!"
+  },
+  EFFORT: {
+    title: "💪 Effort",
+    descr:
+      "You use STATS to determine if your ATTEMPT succeeds or fails, EFFORT is rolled after making a sucesfull ATTEMPT to determine how well you did."
+  },
+  ATTEMPTS: {
+    title: "🎯 Attempt",
+    descr:
+      "Larger tasks can take time to complete. ATTEMPTS involve a D20 roll, adding a STAT, and rolling EFFORT to complete a task or destroy a foe. Some examples: 'Destroy a security droid with multiple blaster shots', 'Translate a tablet covered in mysterious old runes', 'Cut your way through a barricade with your battle axe'."
+  },
+  ATTEMPT: {
+    title: "🎯 Attempt",
+    descr:
+      "Larger tasks can take time to complete. ATTEMPTS involve a D20 roll, adding a STAT, and rolling EFFORT to complete a task or destroy a foe. Some examples: 'Destroy a security droid with multiple blaster shots', 'Translate a tablet covered in mysterious old runes', 'Cut your way through a barricade with your battle axe'."
   }
 };
 export type InfoKeys = keyof ModalInfos;
