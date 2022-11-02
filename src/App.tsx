@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import HyperLinkedText from "./components/HyperLinkedText";
 import { useHeroContext } from "./context/heroContext";
 import NumAttrSection from "./components/NumAttrSection";
+import { useGameContext } from "./context/gameContext";
 
 const Global = createGlobalStyle`
   body {
@@ -50,13 +51,14 @@ const Main = styled.div`
 `;
 
 const HTitleText = styled.h2`
-  color: ${(props) => props.theme.palette.common.foreground};
+  color: ${(props) => props.theme.palette.common.text};
 `;
 
 const HDescr = styled.p`
-  color: ${(props) => props.theme.palette.common.foreground};
-  font-style: italic;
-  margin-bottom: 1rem;
+  color: ${(props) => props.theme.palette.common.text};
+  /* font-style: italic; */
+  font-size: 1.8rem;
+  margin-bottom: 2.5rem;
 `;
 
 const Spacer = styled.div`
@@ -76,6 +78,7 @@ const HSpacer = styled(Spacer)`
 
 function App() {
   const { hero, setStat, setEffort } = useHeroContext();
+  const { settings } = useGameContext();
   return (
     <>
       <Wrapper>
@@ -103,7 +106,11 @@ function App() {
               }
             />
           </HDescr>
-          <NumAttrSection attrObj={hero.stats} setter={setStat} />
+          <NumAttrSection
+            attrObj={hero.stats}
+            setter={setStat}
+            max={settings.maxStats}
+          />
           <Spacer />
           <HelpButton keyVal={"EFFORT"}>
             <HTitleText>Effort</HTitleText>
@@ -115,7 +122,11 @@ function App() {
               }
             />
           </HDescr>
-          <NumAttrSection attrObj={hero.effort} setter={setEffort} />
+          <NumAttrSection
+            attrObj={hero.effort}
+            setter={setEffort}
+            max={settings.maxEffort}
+          />
         </Main>
       </Wrapper>
       <Explainer />

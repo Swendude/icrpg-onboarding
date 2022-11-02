@@ -14,8 +14,8 @@ const HeroName = styled.h1`
 
 const SavedStatus = styled.p`
   font-style: italic;
-  font-size: 1rem;
-  opacity: 0.6;
+  font-size: 1.2rem;
+  opacity: 0.8;
   align-self: flex-end;
 `;
 const HeroHeader = () => {

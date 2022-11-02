@@ -9,7 +9,7 @@ const ButtonRow = styled.div`
   }
 `;
 
-const Button = styled.button`
+const Button = styled.button<{ enabled?: boolean }>`
   width: 50%;
   display: flex;
   align-items: center;
@@ -20,12 +20,17 @@ const Button = styled.button`
   border-color: ${(props) => props.theme.palette.common.text};
   border-width: 0 1px 1px 1px;
   border-style: solid;
-  cursor: pointer;
 
-  :hover {
-    background-color: ${(props) => props.theme.palette.common.text};
-    color: ${(props) => props.theme.palette.common.background};
-  }
+  ${(props) =>
+    props.enabled
+      ? `cursor: pointer;
+    :hover {
+    background-color: ${props.theme.palette.common.text};
+    color: ${props.theme.palette.common.background};`
+      : `
+      background-color: ${props.theme.palette.common.foreground};
+
+      `}
 `;
 
 const NumberWrapper = styled.div`
@@ -79,11 +84,13 @@ const Wrapper = styled.div`
 function NumAttrEditor<KType>({
   attr,
   value,
-  setter
+  setter,
+  allowPlus = true
 }: {
   attr: KType;
   value: number;
   setter: (key: KType, n: number) => void;
+  allowPlus?: boolean;
 }) {
   return (
     <Wrapper>
@@ -98,8 +105,15 @@ function NumAttrEditor<KType>({
         </TitleWrapper>
       </InnerWrapper>
       <ButtonRow>
-        <Button onClick={() => setter(attr, value + 1)}>＋</Button>
-        <Button onClick={() => setter(attr, value - 1)}>－</Button>
+        <Button
+          onClick={() => allowPlus && setter(attr, value + 1)}
+          enabled={allowPlus}
+        >
+          ＋
+        </Button>
+        <Button onClick={() => setter(attr, value - 1)} enabled={true}>
+          －
+        </Button>
       </ButtonRow>
     </Wrapper>
   );

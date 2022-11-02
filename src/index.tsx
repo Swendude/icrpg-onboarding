@@ -7,18 +7,20 @@ import HeroProvider from "./context/heroContext";
 import AppProvider from "./context/appContext";
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./theme";
-
+import GameProvider from "./context/gameContext";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={defaultTheme}>
-      <AppProvider>
-        <HeroProvider>
-          <App />
-        </HeroProvider>
-      </AppProvider>
+      <GameProvider>
+        <AppProvider>
+          <HeroProvider>
+            <App />
+          </HeroProvider>
+        </AppProvider>
+      </GameProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
