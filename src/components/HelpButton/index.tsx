@@ -16,11 +16,14 @@ const Button = styled.button<{ dark: boolean }>`
       : props.theme.palette.common.text};
   border-radius: 15px;
   border-width: 1px;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2.8rem;
+  height: 2.8rem;
   margin: 0 0 0 0.5rem;
   cursor: pointer;
   opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Wrapper = styled.div`
