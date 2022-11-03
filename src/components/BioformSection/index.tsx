@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { useHeroContext } from "../../context/heroContext";
 import { bioforms } from "../../data/bioforms";
 import { Bioform } from "../../types/hero";
 import AdderBlocks from "../AdderBlocks";
@@ -77,21 +78,24 @@ const CurrentInfo = ({ selected }: { selected: Bioform | undefined }) => {
     );
   }
   return (
-    <InfoText>
-      <p>Select a race to see more info!</p>
-    </InfoText>
+    <InfoWrapper>
+      <InfoText>
+        <p>Select a race to see more info!</p>
+      </InfoText>
+    </InfoWrapper>
   );
 };
 const BioformSection = () => {
+  const { hero, setBioform } = useHeroContext();
   const [selected, setSelected] = useState<Bioform | undefined>(undefined);
 
   return (
     <Wrapper>
       <PickerWrapper>
         <Picker
-          value={selected?.name}
+          value={hero.bioform?.name}
           onChange={(e) =>
-            setSelected(bioforms.find((bf) => bf.name === e.target.value))
+            setBioform(bioforms.find((bf) => bf.name === e.target.value))
           }
         >
           <option>Pick a race</option>
@@ -100,7 +104,7 @@ const BioformSection = () => {
           ))}
         </Picker>
       </PickerWrapper>
-      <CurrentInfo selected={selected} />
+      <CurrentInfo selected={hero.bioform} />
     </Wrapper>
   );
 };

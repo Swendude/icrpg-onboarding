@@ -7,8 +7,11 @@ const BlockLine = styled.div`
   flex: 0 0 30%;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 `;
-const Key = styled.p``;
+const Key = styled.p`
+  font-size: 2rem;
+`;
 const Mod = styled.p`
   font-size: 2rem;
 `;

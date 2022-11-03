@@ -8,7 +8,7 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
 `;
 
-const HeroName = styled.h1`
+const HeroTitle = styled.h1`
   color: ${(props) => props.theme.palette.common.text};
 `;
 
@@ -18,14 +18,22 @@ const SavedStatus = styled.p`
   opacity: 0.8;
   align-self: flex-end;
 `;
+
+const HeroName = styled.span``;
+const HeroBF = styled.span`
+  font-size: 1.6rem;
+`;
 const HeroHeader = () => {
   const { isSaved, hero } = useHeroContext();
 
   return (
     <HeaderContainer>
-      <HeroName>
-        ⚔️ {hero.name.length > 0 ? hero.name : "Unnamed hero"}
-      </HeroName>
+      <HeroTitle>
+        <HeroName>
+          ⚔️ {hero.name.length > 0 ? hero.name : "Unnamed hero"}
+        </HeroName>
+        <HeroBF> the {hero.bioform ? hero.bioform.name : ""}</HeroBF>
+      </HeroTitle>
       <SavedStatus>
         {isSaved ? "● Hero saved" : "○ Hero saving soon"}
       </SavedStatus>

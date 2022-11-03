@@ -59,7 +59,7 @@ const HDescr = styled.p`
   color: ${(props) => props.theme.palette.common.text};
   /* font-style: italic; */
   font-size: 1.8rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 4rem;
 `;
 
 const Spacer = styled.div`
@@ -68,8 +68,7 @@ const Spacer = styled.div`
   width: 100%;
   border-style: dashed;
   border-width: 1px 0 0 0;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 4rem 0;
   border-color: ${(props) => props.theme.palette.common.text};
 `;
 
