@@ -6,8 +6,17 @@ export type Hero = {
   inventory: Item[];
 };
 
+// Something that can add stuff to a hero
+type HeroAdder = {
+  stats: Partial<Stats> | undefined;
+  effort: Partial<Effort> | undefined;
+  extraStats: Partial<ExtraStats> | undefined;
+};
+
 export type Bioform = {
   name: string;
+  description: string;
+  adder: HeroAdder;
 };
 
 export type StatKey = keyof Stats;
@@ -21,9 +30,11 @@ type Stats = {
   INT: number;
 };
 
-interface ItemStats extends Stat {
+type ExtraStats = {
   DEFENSE: number;
-}
+  HP: number;
+  SP: number;
+};
 
 type Effort = {
   BASIC: number;
@@ -38,6 +49,7 @@ export type EffortKey = keyof Effort;
 type Item = {
   name: string;
   description: string;
-  stats: ItemStats;
+  adder: HeroAdder;
+  defense: number;
   effort: Effort;
 };

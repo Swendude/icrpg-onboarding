@@ -9,6 +9,7 @@ import HyperLinkedText from "./components/HyperLinkedText";
 import { useHeroContext } from "./context/heroContext";
 import NumAttrSection from "./components/NumAttrSection";
 import { useGameContext } from "./context/gameContext";
+import BioformSection from "./components/BioformSection";
 
 const Global = createGlobalStyle`
   body {
@@ -95,6 +96,18 @@ function App() {
             />
           </HDescr>
           <DetailsSection />
+          <Spacer />
+          <HelpButton keyVal={"BIOFORM"}>
+            <HTitleText>BIOFORM</HTitleText>
+          </HelpButton>
+          <HDescr>
+            <HyperLinkedText
+              text={
+                "What are you? What cultural traditions do you follow, and which ones have you chosen not to adopt?"
+              }
+            />
+          </HDescr>
+          <BioformSection />
           <Spacer />
           <HelpButton keyVal={"STATS"}>
             <HTitleText>Stats</HTitleText>

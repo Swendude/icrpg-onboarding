@@ -83,6 +83,21 @@ const modalInfos = {
     title: "🎯 Attempt",
     descr:
       "Larger tasks can take time to complete. ATTEMPTS involve a D20 roll, adding a STAT, and rolling EFFORT to complete a task or destroy a foe. Some examples: 'Destroy a security droid with multiple blaster shots', 'Translate a tablet covered in mysterious old runes', 'Cut your way through a barricade with your battle axe'."
+  },
+  BIOFORM: {
+    title: "🧬 Bioform",
+    descr:
+      "The human with the blade, the sludge-monster with a shield, the orange glowing energy creature; these are only a few examples of BIOFORMS your hero can be. Your BIOFORM determines your physical appearance, and gives you some specific stats! It also influences how NPCs react to your hero!"
+  },
+  NPC: {
+    title: "👤 NPCs",
+    descr:
+      "Non-Playable Characters (NPCs) are the characters your HERO will encounter in the world. They will be played by your DM."
+  },
+  NPCs: {
+    title: "👤 NPCs",
+    descr:
+      "Non-Playable Characters (NPCs) are the characters your HERO will encounter in the world. They will be played by your DM."
   }
 };
 export type InfoKeys = keyof ModalInfos;
