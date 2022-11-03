@@ -31,7 +31,7 @@ export const bioforms: Bioform[] = [
   {
     name: "Gnome",
     description:
-      "Gnomes are known for their love of tobacco and red hats, as well as their poor sense of humor.They eat a lot, man they eat a lot!!Gnomes are known for their love of tobacco and red hats, as well as their poor sense of humor.They eat a lot, man they eat a lot!!Gnomes are known for their love of tobacco and red hats, as well as their poor sense of humor.They eat a lot, man they eat a lot!!Gnomes are known for their love of tobacco and red hats, as well as their poor sense of humor.They eat a lot, man they eat a lot!!Gnomes are known for their love of tobacco and red hats, as well as their poor sense of humor.They eat a lot, man they eat a lot!!",
+      "Gnomes are known for their love of tobacco and red hats, as well as their poor sense of humor.",
     adder: {
       stats: {
         DEX: 1

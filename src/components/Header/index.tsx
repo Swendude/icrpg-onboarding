@@ -32,7 +32,7 @@ const HeroHeader = () => {
         <HeroName>
           ⚔️ {hero.name.length > 0 ? hero.name : "Unnamed hero"}
         </HeroName>
-        <HeroBF> the {hero.bioform ? hero.bioform.name : ""}</HeroBF>
+        <HeroBF> {hero.bioform ? `the ${hero.bioform.name}` : ""}</HeroBF>
       </HeroTitle>
       <SavedStatus>
         {isSaved ? "● Hero saved" : "○ Hero saving soon"}
