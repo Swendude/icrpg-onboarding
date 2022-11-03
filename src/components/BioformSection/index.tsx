@@ -61,7 +61,7 @@ const BlockWrapper = styled.div`
   border-style: dashed;
   border-width: 1px 0px 0 0;
   border-color: ${(props) => props.theme.palette.common.foreground};
-  padding: 1.5rem 40%;
+  padding: 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
 `;

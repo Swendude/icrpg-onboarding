@@ -5,12 +5,12 @@ import { objKeys, objValues } from "../../utils/helpers";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
 `;
 
 const Info = styled.p`
-  /* font-style: italic; */
-  /* opacity: 0.8; */
+  padding-bottom: 1rem;
 `;
 
 const Editors = styled.div`

@@ -59,7 +59,7 @@ const HDescr = styled.p`
   color: ${(props) => props.theme.palette.common.text};
   /* font-style: italic; */
   font-size: 1.8rem;
-  margin-bottom: 4rem;
+  margin: 2rem 0;
 `;
 
 const Spacer = styled.div`

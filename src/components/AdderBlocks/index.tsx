@@ -8,6 +8,7 @@ const BlockLine = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-bottom: 1rem;
 `;
 const Key = styled.p`
   font-size: 2rem;
