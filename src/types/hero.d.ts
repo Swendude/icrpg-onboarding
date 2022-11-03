@@ -1,5 +1,6 @@
 export type Hero = {
   name: string;
+  properties: Properties;
   story: string;
   stats: Stats;
   effort: Effort;
@@ -10,7 +11,7 @@ export type Hero = {
 type HeroAdder = {
   stats: Partial<Stats> | undefined;
   effort: Partial<Effort> | undefined;
-  extraStats: Partial<ExtraStats> | undefined;
+  properties: Partial<Properties> | undefined;
 };
 
 export type Bioform = {
@@ -21,7 +22,7 @@ export type Bioform = {
 
 export type StatKey = keyof Stats;
 
-type Stats = {
+export type Stats = {
   STR: number;
   DEX: number;
   CON: number;
@@ -30,7 +31,7 @@ type Stats = {
   INT: number;
 };
 
-type ExtraStats = {
+type Properties = {
   DEFENSE: number;
   HP: number;
   SP: number;

@@ -25,6 +25,7 @@ export const useHeroContext = () => {
 const defaultHero = (): Hero => ({
   name: "",
   story: "",
+  properties: { DEFENSE: 0, HP: 10, SP: 10 },
   stats: { STR: 0, DEX: 0, CON: 0, CHA: 0, INT: 0, WIS: 0 },
   effort: { BASIC: 0, WEAPON: 0, SPECIAL: 0, MAGIC: 0, ULTIMATE: 0 },
   inventory: []

@@ -69,6 +69,26 @@ const modalInfos = {
     descr:
       "The D20 is the main dice you will use to perform ATTEMPTS in combination with STATS. Roll the bones, pray to the fates and hit those sweet natural 20s!"
   },
+  D12: {
+    title: "🎲 12 Sided Dice",
+    descr: "A dice with 12 sides. Used for ULTIMATE."
+  },
+  D10: {
+    title: "🎲 10 Sided Dice",
+    descr: "A dice with 10 sides. Used for MAGIC."
+  },
+  D8: {
+    title: "🎲 8 Sided Dice",
+    descr: "A dice with 8 sides. Used for SPECIAL."
+  },
+  D6: {
+    title: "🎲 6 Sided Dice",
+    descr: "A dice with 6 sides. Used for WEAPON."
+  },
+  D4: {
+    title: "🎲 4 Sided Dice",
+    descr: "A dice with 4 sides. Used for BASIC."
+  },
   EFFORT: {
     title: "💪 Effort",
     descr:
@@ -98,6 +118,31 @@ const modalInfos = {
     title: "👤 NPCs",
     descr:
       "Non-Playable Characters (NPCs) are the characters your HERO will encounter in the world. They will be played by your DM."
+  },
+  BASIC: {
+    title: "✊ Basic",
+    descr:
+      "If you are only using your bare hands or your wits, roll a D4 after a successful ATTEMPT to do damage with a punch, bend bars with raw muscle, or take time to decipher a block of cod- ed writing."
+  },
+  WEAPON: {
+    title: "🗡 Weapon & Tools",
+    descr:
+      "Any time you are using a standard ranged or melee weapon to do damage, roll a D6. Also roll a D6 when using tools to accomplish a task such as using a pry bar to open a jammed door, using bandages to cure a wound, or using a micro torch to seal a bulkhead hatch."
+  },
+  SPECIAL: {
+    title: "❓ Special",
+    descr:
+      "Some weapons or tools require unique skills from the wielder, roll a D8 to use a severed monster part for attacking or fire one of those powerful firearms folks have been experimenting with."
+  },
+  MAGIC: {
+    title: "✨ Magic",
+    descr:
+      "Roll a D10 for EFFORT when you are casting explosive magic or using arcane energy. Also roll a D10 for any weapon or effect that employs energy such as particle beams, lasers or plasma. Healing with magical power? That would also be a D10."
+  },
+  ULTIMATE: {
+    title: "⭐️ Ultimate",
+    descr:
+      "Ah, the almighty D12. When you roll a critical success on your ATTEMPT, a natural 20 on the D20 roll, you’ll roll the type of EFFORT above that fits, and add a D12 on top of that roll! You have excelled at your ATTEMPT with ULTIMATE results!"
   }
 };
 export type InfoKeys = keyof ModalInfos;

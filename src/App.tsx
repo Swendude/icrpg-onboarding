@@ -98,7 +98,7 @@ function App() {
           <DetailsSection />
           <Spacer />
           <HelpButton keyVal={"BIOFORM"}>
-            <HTitleText>BIOFORM</HTitleText>
+            <HTitleText>Bioform</HTitleText>
           </HelpButton>
           <HDescr>
             <HyperLinkedText

@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { bioforms } from "../../data/bioforms";
 import { Bioform } from "../../types/hero";
+import AdderBlocks from "../AdderBlocks";
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ const Wrapper = styled.div`
 const PickerWrapper = styled.div`
   width: 100%;
   position: relative;
-  border-style: solid solid dashed solid;
+  border-style: solid;
   border-color: ${(props) => props.theme.palette.common.foreground};
   border-radius: ${(props) => props.theme.borderRadiusTop};
 
@@ -40,26 +41,45 @@ const Picker = styled.select`
   cursor: pointer;
 `;
 
-const InfoBox = styled.div`
+const InfoText = styled.p`
+  margin: 1.5rem;
+`;
+
+const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   width: 100%;
-  padding: 1.2rem;
+  gap: 1rem;
   border: 1px solid;
   border-color: ${(props) => props.theme.palette.common.foreground};
-  border-width: 0 1px 1px 1px;
+  border-width: 0px 1px 1px 1px;
+`;
+
+const BlockWrapper = styled.div`
+  border-style: dashed;
+  border-width: 1px 0px 0 0;
+  border-color: ${(props) => props.theme.palette.common.foreground};
+  padding: 1.5rem 40%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const CurrentInfo = ({ selected }: { selected: Bioform | undefined }) => {
   if (selected) {
     return (
-      <InfoBox>
-        <p>{selected.description}</p>
-      </InfoBox>
+      <InfoWrapper>
+        <InfoText>{selected.description}</InfoText>
+        <BlockWrapper>
+          <AdderBlocks adder={selected.adder} />
+        </BlockWrapper>
+      </InfoWrapper>
     );
   }
   return (
-    <InfoBox>
+    <InfoText>
       <p>Select a race to see more info!</p>
-    </InfoBox>
+    </InfoText>
   );
 };
 const BioformSection = () => {

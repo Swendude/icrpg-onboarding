@@ -11,7 +11,7 @@ export const bioforms: Bioform[] = [
         CHA: 1
       },
       effort: undefined,
-      extraStats: undefined
+      properties: undefined
     }
   },
   {
@@ -23,7 +23,7 @@ export const bioforms: Bioform[] = [
         CON: 1
       },
       effort: undefined,
-      extraStats: {
+      properties: {
         DEFENSE: 1
       }
     }
@@ -37,7 +37,7 @@ export const bioforms: Bioform[] = [
         DEX: 1
       },
       effort: { MAGIC: 1 },
-      extraStats: undefined
+      properties: undefined
     }
   }
 ];
