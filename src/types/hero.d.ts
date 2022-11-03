@@ -6,6 +6,10 @@ export type Hero = {
   inventory: Item[];
 };
 
+export type Bioform = {
+  name: string;
+};
+
 export type StatKey = keyof Stats;
 
 type Stats = {

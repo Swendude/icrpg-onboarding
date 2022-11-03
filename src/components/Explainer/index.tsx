@@ -53,6 +53,9 @@ const Closer = styled.button`
   margin-top: 4rem;
   margin-bottom: 2rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   :hover {
     color: ${(props) => props.theme.palette.common.foreground};
