@@ -107,7 +107,7 @@ function NumAttrEditor<KType>({
       <ButtonRow>
         <Button
           onClick={() => allowPlus && setter(attr, value + 1)}
-          enabled={allowPlus}
+          enabled={true}
         >
           ＋
         </Button>
