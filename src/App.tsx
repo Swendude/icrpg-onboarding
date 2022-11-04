@@ -14,7 +14,9 @@ import { RoundedTop } from "./styles/defaults";
 import SelectorSection from "./components/SelectorSection";
 import BioFormInfo from "./components/BioformInfo";
 import types from "./data/types";
-import HeroTypeInfo from "./components/HeroTypeInfo";
+import DescriptionInfo from "./components/DescriptionInfo";
+import { Ability } from "./types/hero";
+
 const Global = createGlobalStyle`
   body {
     background-color: ${(props) => props.theme.palette.common.background};
@@ -63,7 +65,6 @@ const HTitleText = styled.h2`
 
 const HDescr = styled.p`
   color: ${(props) => props.theme.palette.common.text};
-  /* font-style: italic; */
   font-size: 1.8rem;
   margin: 2rem 0;
 `;
@@ -82,7 +83,7 @@ const HSpacer = styled(Spacer)`
 `;
 
 function App() {
-  const { hero, final, setStat, setEffort, setBioform, setType } =
+  const { hero, final, setStat, setEffort, setBioform, setType, setAbility } =
     useHeroContext();
   const { settings } = useGameContext();
   return (
@@ -136,7 +137,16 @@ function App() {
             stringify={(val) => (!val ? "" : val.name)}
             setter={(val) => setType(types.find((t) => t.name === val))}
             options={types}
-            Content={HeroTypeInfo}
+            Content={({ selected }) => (
+              <DescriptionInfo
+                description={selected ? selected.description : undefined}
+                notSetMsg={
+                  hero.type
+                    ? "Select an option to see more info!"
+                    : "Select a TYPE first!"
+                }
+              />
+            )}
           />
           <Spacer />
           <HelpButton keyVal={"STATS"}>
@@ -176,6 +186,38 @@ function App() {
             setter={setEffort}
             max={settings.maxEffort}
           />
+          <Spacer />
+          <HelpButton keyVal={"ABILITIES"}>
+            <HTitleText>Abilities</HTitleText>
+          </HelpButton>
+          <HDescr>
+            <HyperLinkedText
+              text={
+                "Your TYPE allows you to choose one ABILITY that defines your HERO!"
+              }
+            />
+          </HDescr>
+          <SelectorSection
+            value={hero.ability}
+            stringify={(val) => (!val ? "" : val.name)}
+            setter={(val) =>
+              setAbility(
+                hero.type?.startingAbilities.find((t) => t.name === val)
+              )
+            }
+            options={hero.type?.startingAbilities || []}
+            Content={({ selected }) => (
+              <DescriptionInfo
+                description={selected ? selected.description : undefined}
+                notSetMsg={
+                  hero.type
+                    ? "Select an option to see more info!"
+                    : "Select a TYPE first!"
+                }
+              />
+            )}
+          />
+          <Spacer />
         </Main>
       </Wrapper>
       <Explainer />

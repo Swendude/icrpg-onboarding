@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Hero, StatKey, EffortKey, Bioform, HeroType } from "../types/hero";
+import {
+  Hero,
+  StatKey,
+  EffortKey,
+  Bioform,
+  HeroType,
+  Ability
+} from "../types/hero";
 import { useDebounce } from "./hooks";
 import { DateTime } from "luxon";
 import { FinalHeroStats, finalizeHero } from "../utils/heroTools";
@@ -13,6 +20,7 @@ export type HeroContext = {
   setEffort: (k: EffortKey, v: number) => void;
   setBioform: (b: Bioform | undefined) => void;
   setType: (t: HeroType | undefined) => void;
+  setAbility: (a: Ability | undefined) => void;
   savedTime: luxon.DateTime;
   isSaved: boolean;
 };
@@ -34,6 +42,7 @@ const defaultHero = (): Hero => ({
   effort: { BASIC: 0, WEAPON: 0, SPECIAL: 0, MAGIC: 0, ULTIMATE: 0 },
   bioform: undefined,
   type: undefined,
+  ability: undefined,
   inventory: []
 });
 
@@ -99,7 +108,15 @@ const HeroProvider: React.FC<{
     setHero({ ...hero, bioform: bf });
   };
   const setType = (t: HeroType | undefined) => {
-    setHero({ ...hero, type: t });
+    if (!t) {
+      setHero({ ...hero, type: undefined, ability: undefined });
+    } else {
+      setHero({ ...hero, type: t });
+    }
+  };
+
+  const setAbility = (a: Ability | undefined) => {
+    setHero({ ...hero, ability: a });
   };
   return (
     <heroContext.Provider
@@ -112,6 +129,7 @@ const HeroProvider: React.FC<{
         setEffort,
         setBioform,
         setType,
+        setAbility,
         savedTime,
         isSaved: changedBeforeSave === "no changes" ? true : changedBeforeSave
       }}

@@ -6,6 +6,7 @@ export type Hero = {
   effort: Effort;
   bioform: Bioform | undefined;
   type: HeroType | undefined;
+  ability: Ability | undefined;
   inventory: Item[];
 };
 
@@ -26,7 +27,7 @@ export type HeroType = {
 type Ability = {
   name: string;
   description: string;
-  adders: HeroAdder;
+  adder: HeroAdder | undefined;
 };
 
 export type Bioform = {

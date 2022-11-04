@@ -24,6 +24,7 @@ const Trigger = styled(Select.Trigger)`
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  outline: none;
 `;
 const Content = styled(Select.Content)`
   background-color: ${(props) => props.theme.palette.common.background};
