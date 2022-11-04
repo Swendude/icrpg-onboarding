@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { useHeroContext } from "../../context/heroContext";
 import { bioforms } from "../../data/bioforms";
@@ -87,7 +86,6 @@ const CurrentInfo = ({ selected }: { selected: Bioform | undefined }) => {
 };
 const BioformSection = () => {
   const { hero, setBioform } = useHeroContext();
-  const [selected, setSelected] = useState<Bioform | undefined>(undefined);
 
   return (
     <Wrapper>

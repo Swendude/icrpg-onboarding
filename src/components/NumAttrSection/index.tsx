@@ -20,16 +20,24 @@ const Editors = styled.div`
   gap: 2rem;
 `;
 
-function NumAttrSection<KType extends string>({
+function NumAttrSection<Obj extends Record<string, number>>({
   attrObj,
+  final,
+  bioform,
+  loot,
   setter,
   max
 }: {
-  attrObj: Record<KType, number>;
-  setter: (k: KType, v: number) => void;
+  attrObj: Obj;
+  final: Obj;
+  bioform: Obj;
+  loot: Obj;
+  setter: (k: keyof Obj, v: number) => void;
   max: number;
 }) {
-  const totalVal = objValues(attrObj).reduce((acc, cur) => acc + cur) as number;
+  const totalVal = objValues(attrObj as Record<string, number>).reduce(
+    (acc, cur) => acc + cur
+  ) as number;
 
   return (
     <Wrapper>
@@ -37,10 +45,14 @@ function NumAttrSection<KType extends string>({
         You are allowed {max} points. Current:{totalVal}/{max}
       </Info>
       <Editors>
-        {objKeys(attrObj).map((k) => (
+        {objKeys(attrObj).map((k, i) => (
           <NumAttrEditor
+            key={i}
             attr={k}
-            value={attrObj[k]}
+            finalValue={final[k]}
+            lootValue={loot[k]}
+            bioformValue={bioform[k]}
+            baseValue={attrObj[k]}
             setter={setter}
             allowPlus={max > totalVal}
           />

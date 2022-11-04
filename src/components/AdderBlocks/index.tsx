@@ -24,11 +24,11 @@ function MappingBonus<M extends object>({
 }) {
   return (
     <>
-      {objKeys(bonusMapping).map((key_) => {
+      {objKeys(bonusMapping).map((key_, i) => {
         const maybeStat = bonusMapping[key_];
         if (maybeStat) {
           return (
-            <BlockLine>
+            <BlockLine key={i}>
               <Key>
                 <HyperLinkedText text={key_ as string} />
               </Key>

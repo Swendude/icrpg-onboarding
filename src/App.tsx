@@ -77,7 +77,7 @@ const HSpacer = styled(Spacer)`
 `;
 
 function App() {
-  const { hero, setStat, setEffort } = useHeroContext();
+  const { hero, final, setStat, setEffort } = useHeroContext();
   const { settings } = useGameContext();
   return (
     <>
@@ -120,6 +120,9 @@ function App() {
           </HDescr>
           <NumAttrSection
             attrObj={hero.stats}
+            final={final.final.stats}
+            bioform={final.bioform.stats}
+            loot={final.loot.stats}
             setter={setStat}
             max={settings.maxStats}
           />
@@ -136,6 +139,9 @@ function App() {
           </HDescr>
           <NumAttrSection
             attrObj={hero.effort}
+            final={final.final.effort}
+            bioform={final.bioform.effort}
+            loot={final.loot.effort}
             setter={setEffort}
             max={settings.maxEffort}
           />

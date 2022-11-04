@@ -81,23 +81,53 @@ const Wrapper = styled.div`
   min-width: 14rem;
 `;
 
+const NumberSubNumberWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`;
+
+const SubNumberWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const SubNumber = styled.p`
+  font-size: 1rem;
+  opacity: 0.6;
+  text-align: right;
+`;
+
 function NumAttrEditor<KType>({
   attr,
-  value,
+  baseValue,
+  lootValue,
+  bioformValue,
+  finalValue,
   setter,
   allowPlus = true
 }: {
   attr: KType;
-  value: number;
+  baseValue: number;
+  bioformValue: number;
+  lootValue: number;
+  finalValue: number;
   setter: (key: KType, n: number) => void;
   allowPlus?: boolean;
 }) {
   return (
     <Wrapper>
       <InnerWrapper>
-        <NumberWrapper>
-          <Number>{value}</Number>
-        </NumberWrapper>
+        <NumberSubNumberWrapper>
+          <NumberWrapper>
+            <Number>{finalValue}</Number>
+          </NumberWrapper>
+          <SubNumberWrapper>
+            <SubNumber>BASE: {baseValue}</SubNumber>
+            <SubNumber>LOOT: {lootValue}</SubNumber>
+            <SubNumber>BIO: {bioformValue}</SubNumber>
+          </SubNumberWrapper>
+        </NumberSubNumberWrapper>
         <TitleWrapper>
           <HelpButton keyVal={attr}>
             <EditorTitle>{attr as String}</EditorTitle>
@@ -106,12 +136,12 @@ function NumAttrEditor<KType>({
       </InnerWrapper>
       <ButtonRow>
         <Button
-          onClick={() => allowPlus && setter(attr, value + 1)}
+          onClick={() => allowPlus && setter(attr, baseValue + 1)}
           enabled={true}
         >
           ＋
         </Button>
-        <Button onClick={() => setter(attr, value - 1)} enabled={true}>
+        <Button onClick={() => setter(attr, baseValue - 1)} enabled={true}>
           －
         </Button>
       </ButtonRow>

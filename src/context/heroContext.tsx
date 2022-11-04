@@ -2,9 +2,11 @@ import * as React from "react";
 import { Hero, StatKey, EffortKey, Bioform } from "../types/hero";
 import { useDebounce } from "./hooks";
 import { DateTime } from "luxon";
+import { FinalHeroStats, finalizeHero } from "../utils/heroTools";
 
 export type HeroContext = {
   hero: Hero;
+  final: FinalHeroStats;
   setName: (v: string) => void;
   setStory: (v: string) => void;
   setStat: (k: StatKey, v: number) => void;
@@ -99,6 +101,7 @@ const HeroProvider: React.FC<{
     <heroContext.Provider
       value={{
         hero,
+        final: finalizeHero(hero),
         setName,
         setStory,
         setStat,
