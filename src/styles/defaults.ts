@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
 export const RoundedTop = styled.div`
-  border-style: solid;
-  border-width: 1px;
-  border-radius: ${(props) => props.theme.borderRadiusTop};
-  color: ${(props) => props.theme.palette.common.text};
+  ${(props) => withRoundedTop(props)}
 `;
+
+export const withRoundedTop = (props: any): string => {
+  const result = `border-style: solid;
+    border-width: 1px;
+    border-radius: ${props.theme.borderRadiusTop};
+    color: ${props.theme.palette.common.text};
+  `;
+  return result;
+};

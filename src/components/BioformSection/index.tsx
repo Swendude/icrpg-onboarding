@@ -3,7 +3,6 @@ import { useHeroContext } from "../../context/heroContext";
 import { bioforms } from "../../data/bioforms";
 import { Bioform } from "../../types/hero";
 import AdderBlocks from "../AdderBlocks";
-import { RoundedTop } from "../../styles/defaults";
 import Selector from "../Selector";
 const Wrapper = styled.div`
   display: flex;

@@ -1,5 +1,6 @@
 import * as Select from "@radix-ui/react-select";
-import styled from "styled-components";
+import styled, { StyledComponent } from "styled-components";
+import { withRoundedTop } from "../../styles/defaults";
 
 const Item = styled(Select.Item)`
   font-size: 2rem;
@@ -14,11 +15,8 @@ const Item = styled(Select.Item)`
 `;
 
 const Trigger = styled(Select.Trigger)`
+  ${(props) => withRoundedTop(props)};
   background-color: ${(props) => props.theme.palette.common.background};
-  border-style: solid;
-  border-width: 1px;
-  border-radius: ${(props) => props.theme.borderRadiusTop};
-  color: ${(props) => props.theme.palette.common.text};
   width: 100%;
   padding: 1.5rem;
   font-size: 2rem;
