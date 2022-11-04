@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useAppContext } from "../../context/appContext";
-import modalInfos, { ModalInfos } from "../../data/modalInfo";
 import { RoundedTop } from "../../styles/defaults";
 import HyperLinkedText from "../HyperLinkedText";
 
@@ -64,15 +63,11 @@ const Explainer = () => {
   return (
     <Background className={state.showModal ? "show" : ""}>
       <Modal>
-        {state.modalInfoKey ? (
+        {state.modalInfo ? (
           <>
-            <Title>
-              {modalInfos[state.modalInfoKey as keyof ModalInfos].title}
-            </Title>
+            <Title>{state.modalInfo.title}</Title>
             <Descr>
-              <HyperLinkedText
-                text={modalInfos[state.modalInfoKey as keyof ModalInfos].descr}
-              />
+              <HyperLinkedText text={state.modalInfo.descr} />
             </Descr>
           </>
         ) : (

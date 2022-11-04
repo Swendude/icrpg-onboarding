@@ -5,6 +5,7 @@ export type Hero = {
   stats: Stats;
   effort: Effort;
   bioform: Bioform | undefined;
+  type: HeroType | undefined;
   inventory: Item[];
 };
 

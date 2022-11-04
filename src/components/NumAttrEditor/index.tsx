@@ -35,6 +35,7 @@ const Button = styled.button<{ enabled?: boolean }>`
 
 const NumberWrapper = styled.div`
   border-radius: ${(props) => props.theme.borderRadius};
+  border-color: ${(props) => props.theme.palette.common.foreground};
   width: 4.5rem;
   height: 4.5rem;
   display: flex;
@@ -57,6 +58,7 @@ const TitleWrapper = styled.div`
   justify-content: center;
   border-style: dashed;
   border-width: 1px 0 0 0;
+  border-color: ${(props) => props.theme.palette.common.foreground};
   width: 100%;
 `;
 
@@ -125,7 +127,7 @@ function NumAttrEditor<KType>({
           </SubNumberWrapper>
         </NumberSubNumberWrapper>
         <TitleWrapper>
-          <HelpButton keyVal={attr}>
+          <HelpButton keyVal={attr as string}>
             <EditorTitle>{attr as String}</EditorTitle>
           </HelpButton>
         </TitleWrapper>

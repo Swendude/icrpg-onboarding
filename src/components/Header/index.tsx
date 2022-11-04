@@ -21,7 +21,7 @@ const SavedStatus = styled.p`
 `;
 
 const HeroName = styled.span``;
-const HeroBF = styled.span`
+const HeroDescr = styled.span`
   font-size: 1.6rem;
 `;
 const HeroHeader = () => {
@@ -33,7 +33,11 @@ const HeroHeader = () => {
         <HeroName>
           ⚔️ {hero.name.length > 0 ? hero.name : "Unnamed hero"}
         </HeroName>
-        <HeroBF> {hero.bioform ? `the ${hero.bioform.name}` : ""}</HeroBF>
+        <HeroDescr>
+          {" "}
+          {hero.bioform ? `the ${hero.bioform.name}` : ""}{" "}
+          {hero.type ? hero.type.name : ""}
+        </HeroDescr>
       </HeroTitle>
       <SavedStatus>
         {isSaved ? "● Hero saved" : "○ Hero saving soon"}

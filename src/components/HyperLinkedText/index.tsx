@@ -1,4 +1,4 @@
-import modalInfos, { InfoKeys } from "../../data/modalInfo";
+import modalInfos, { ModalInfo } from "../../data/modalInfo";
 import styled from "styled-components";
 import { useAppContext } from "../../context/appContext";
 
@@ -14,11 +14,17 @@ const HyperLinkedText = ({ text }: { text: string }) => {
   const { showModal } = useAppContext();
   const punctRe = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
   const words = text.split(" ");
+
+  const allKeywords = modalInfos.reduce(
+    (prev: string[], cur: ModalInfo) => [...prev, ...cur.keywords],
+    []
+  );
+
   return (
     <span>
       {words.map((word, i) => {
-        if (Object.keys(modalInfos).includes(word.replace(punctRe, ""))) {
-          const key: InfoKeys = word.replace(punctRe, "") as InfoKeys;
+        if (allKeywords.includes(word.replace(punctRe, ""))) {
+          const key = word.replace(punctRe, "");
           return (
             <Link key={i} onClick={() => showModal(key)}>
               {word}

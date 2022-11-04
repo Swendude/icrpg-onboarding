@@ -1,11 +1,10 @@
 import * as React from "react";
-import modalInfos, { ModalInfos } from "../data/modalInfo";
-import { objKeys } from "../utils/helpers";
-type AppState = { showModal: boolean; modalInfoKey: string | null };
+import modalInfos, { ModalInfo } from "../data/modalInfo";
+type AppState = { showModal: boolean; modalInfo: ModalInfo | null };
 
 type AppContext = {
   state: AppState;
-  showModal: (key: keyof ModalInfos) => void;
+  showModal: (key: string) => void;
   hideModal: () => void;
 };
 
@@ -25,16 +24,18 @@ const AppProvider: React.FC<{
 }> = ({ children }) => {
   const [appState, setAppState] = React.useState<AppState>({
     showModal: false,
-    modalInfoKey: null
+    modalInfo: null
   });
 
-  const showModal = (key: keyof ModalInfos) => {
-    if (objKeys(modalInfos).includes(key)) {
-      setAppState({ showModal: true, modalInfoKey: key });
+  const showModal = (key: string) => {
+    const modalInfo = modalInfos.find((mi) => mi.keywords.includes(key));
+    console.log(key, modalInfo);
+    if (modalInfo) {
+      setAppState({ showModal: true, modalInfo: modalInfo });
     }
   };
 
-  const hideModal = () => setAppState({ showModal: false, modalInfoKey: null });
+  const hideModal = () => setAppState({ showModal: false, modalInfo: null });
 
   return (
     <appContext.Provider value={{ state: appState, showModal, hideModal }}>

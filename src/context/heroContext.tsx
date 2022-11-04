@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Hero, StatKey, EffortKey, Bioform } from "../types/hero";
+import { Hero, StatKey, EffortKey, Bioform, HeroType } from "../types/hero";
 import { useDebounce } from "./hooks";
 import { DateTime } from "luxon";
 import { FinalHeroStats, finalizeHero } from "../utils/heroTools";
@@ -12,6 +12,7 @@ export type HeroContext = {
   setStat: (k: StatKey, v: number) => void;
   setEffort: (k: EffortKey, v: number) => void;
   setBioform: (b: Bioform | undefined) => void;
+  setType: (t: HeroType | undefined) => void;
   savedTime: luxon.DateTime;
   isSaved: boolean;
 };
@@ -32,6 +33,7 @@ const defaultHero = (): Hero => ({
   stats: { STR: 0, DEX: 0, CON: 0, CHA: 0, INT: 0, WIS: 0 },
   effort: { BASIC: 0, WEAPON: 0, SPECIAL: 0, MAGIC: 0, ULTIMATE: 0 },
   bioform: undefined,
+  type: undefined,
   inventory: []
 });
 
@@ -96,7 +98,9 @@ const HeroProvider: React.FC<{
   const setBioform = (bf: Bioform | undefined) => {
     setHero({ ...hero, bioform: bf });
   };
-
+  const setType = (t: HeroType | undefined) => {
+    setHero({ ...hero, type: t });
+  };
   return (
     <heroContext.Provider
       value={{
@@ -107,6 +111,7 @@ const HeroProvider: React.FC<{
         setStat,
         setEffort,
         setBioform,
+        setType,
         savedTime,
         isSaved: changedBeforeSave === "no changes" ? true : changedBeforeSave
       }}

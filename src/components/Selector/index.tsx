@@ -1,5 +1,5 @@
 import * as Select from "@radix-ui/react-select";
-import styled, { StyledComponent } from "styled-components";
+import styled from "styled-components";
 import { withRoundedTop } from "../../styles/defaults";
 
 const Item = styled(Select.Item)`
@@ -49,7 +49,7 @@ const Selector = ({
   return (
     <Select.Root onValueChange={onChange} value={value || ""}>
       <Trigger>
-        <Select.Value placeholder="Select a bioform" />
+        <Select.Value placeholder="Make a choice" />
         <Select.Icon />
       </Trigger>
       <Select.Portal>
@@ -57,7 +57,7 @@ const Selector = ({
           <Select.ScrollUpButton />
           <Select.Viewport>
             <Item value={""}>
-              <Select.ItemText>Select a bioform</Select.ItemText>
+              <Select.ItemText>Make a choice</Select.ItemText>
             </Item>
             {options.map((child, i) => (
               <Item value={child} key={i}>

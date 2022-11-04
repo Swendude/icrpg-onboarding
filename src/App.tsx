@@ -9,8 +9,12 @@ import HyperLinkedText from "./components/HyperLinkedText";
 import { useHeroContext } from "./context/heroContext";
 import NumAttrSection from "./components/NumAttrSection";
 import { useGameContext } from "./context/gameContext";
-import BioformSection from "./components/BioformSection";
+import { bioforms } from "./data/bioforms";
 import { RoundedTop } from "./styles/defaults";
+import SelectorSection from "./components/SelectorSection";
+import BioFormInfo from "./components/BioformInfo";
+import types from "./data/types";
+import HeroTypeInfo from "./components/HeroTypeInfo";
 const Global = createGlobalStyle`
   body {
     background-color: ${(props) => props.theme.palette.common.background};
@@ -78,7 +82,8 @@ const HSpacer = styled(Spacer)`
 `;
 
 function App() {
-  const { hero, final, setStat, setEffort } = useHeroContext();
+  const { hero, final, setStat, setEffort, setBioform, setType } =
+    useHeroContext();
   const { settings } = useGameContext();
   return (
     <>
@@ -97,7 +102,8 @@ function App() {
           </HDescr>
           <DetailsSection />
           <Spacer />
-          <HelpButton keyVal={"BIOFORM"}>
+
+          <HelpButton keyVal={"Bioform"}>
             <HTitleText>Bioform</HTitleText>
           </HelpButton>
           <HDescr>
@@ -107,7 +113,31 @@ function App() {
               }
             />
           </HDescr>
-          <BioformSection />
+          <SelectorSection
+            value={hero.bioform}
+            stringify={(val) => (!val ? "" : val.name)}
+            setter={(val) => setBioform(bioforms.find((bf) => bf.name === val))}
+            options={bioforms}
+            Content={BioFormInfo}
+          />
+          <Spacer />
+          <HelpButton keyVal={"Type"}>
+            <HTitleText>Type</HTitleText>
+          </HelpButton>
+          <HDescr>
+            <HyperLinkedText
+              text={
+                "How were you trained? Did you master the sword? Are you wandering in search for arcane secrets or is glory the reward you seek? Your TYPE defines the LOOT and ABILITIES you start with."
+              }
+            />
+          </HDescr>
+          <SelectorSection
+            value={hero.type}
+            stringify={(val) => (!val ? "" : val.name)}
+            setter={(val) => setType(types.find((t) => t.name === val))}
+            options={types}
+            Content={HeroTypeInfo}
+          />
           <Spacer />
           <HelpButton keyVal={"STATS"}>
             <HTitleText>Stats</HTitleText>
