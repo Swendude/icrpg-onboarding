@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import HeroProvider from "./context/heroContext";
 import AppProvider from "./context/appContext";
 import { ThemeProvider } from "styled-components";
-import { defaultTheme } from "./theme";
+import { defaultTheme } from "./styles/theme";
 import GameProvider from "./context/gameContext";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

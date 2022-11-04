@@ -3,19 +3,17 @@ import { useHeroContext } from "../../context/heroContext";
 import { bioforms } from "../../data/bioforms";
 import { Bioform } from "../../types/hero";
 import AdderBlocks from "../AdderBlocks";
-
+import { RoundedTop } from "../../styles/defaults";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const PickerWrapper = styled.div`
+const PickerWrapper = styled(RoundedTop)`
   width: 100%;
   position: relative;
   border-style: solid;
-  border-color: ${(props) => props.theme.palette.common.foreground};
-  border-radius: ${(props) => props.theme.borderRadiusTop};
 
   &::after {
     content: "▼";
@@ -27,14 +25,12 @@ const PickerWrapper = styled.div`
   }
 `;
 
-const Picker = styled.select`
-  border-radius: ${(props) => props.theme.borderRadiusTop};
+const Picker = styled(RoundedTop)`
   padding: 1.2rem;
   border: none;
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  color: ${(props) => props.theme.palette.common.text};
   background-color: ${(props) => props.theme.palette.common.background};
   font-size: 2rem;
   font-family: inherit;
@@ -52,14 +48,12 @@ const InfoWrapper = styled.div`
   width: 100%;
   gap: 1rem;
   border: 1px solid;
-  border-color: ${(props) => props.theme.palette.common.foreground};
   border-width: 0px 1px 1px 1px;
 `;
 
 const BlockWrapper = styled.div`
   border-style: dashed;
-  border-width: 1px 0px 0 0;
-  border-color: ${(props) => props.theme.palette.common.foreground};
+  border-width: 1px 0 0 0;
   padding: 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -91,6 +85,7 @@ const BioformSection = () => {
     <Wrapper>
       <PickerWrapper>
         <Picker
+          as="select"
           value={hero.bioform?.name}
           onChange={(e) =>
             setBioform(bioforms.find((bf) => bf.name === e.target.value))

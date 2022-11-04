@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useAppContext } from "../../context/appContext";
 import modalInfos, { ModalInfos } from "../../data/modalInfo";
+import { RoundedTop } from "../../styles/defaults";
 import HyperLinkedText from "../HyperLinkedText";
 
 const Background = styled.div`
@@ -19,17 +20,13 @@ const Background = styled.div`
   }
 `;
 
-const Modal = styled.div`
+const Modal = styled(RoundedTop)`
   min-width: 30rem;
   max-width: 70vw;
   display: flex;
   flex-direction: column;
   padding: 1rem 4rem;
   align-items: center;
-  border-radius: ${(props) => props.theme.borderRadiusTop};
-  border-style: solid;
-  border-width: 1px 1px 0px 1px;
-  border-color: ${(props) => props.theme.palette.common.text};
   background-color: ${(props) => props.theme.palette.common.background};
 `;
 
@@ -46,7 +43,6 @@ const Closer = styled.button`
   height: 5rem;
   color: ${(props) => props.theme.palette.common.background};
   background-color: ${(props) => props.theme.palette.common.foreground};
-  border-color: ${(props) => props.theme.palette.common.foreground};
   border-style: solid;
   border-radius: 50px;
   font-size: 2rem;

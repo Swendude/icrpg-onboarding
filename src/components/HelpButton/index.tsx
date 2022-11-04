@@ -3,18 +3,11 @@ import styled from "styled-components";
 import { useAppContext } from "../../context/appContext";
 import { ModalInfos } from "../../data/modalInfo";
 
-const Button = styled.button<{ dark: boolean }>`
+const Button = styled.button`
   border-style: solid;
   background-color: rgba(0, 0, 0, 0);
-  color: ${(props) =>
-    props.dark
-      ? props.theme.palette.common.background
-      : props.theme.palette.common.text};
-  border-color: ${(props) =>
-    props.dark
-      ? props.theme.palette.common.background
-      : props.theme.palette.common.text};
-  border-radius: 15px;
+  color: ${(props) => props.theme.palette.common.text};
+  border-radius: 50%;
   border-width: 1px;
   width: 2.8rem;
   height: 2.8rem;
@@ -24,6 +17,11 @@ const Button = styled.button<{ dark: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  &:hover {
+    color: ${(props) => props.theme.palette.common.background};
+    background-color: ${(props) => props.theme.palette.common.foreground};
+    opacity: 1;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -33,20 +31,16 @@ const Wrapper = styled.div`
 
 function HelpButton<KType>({
   keyVal,
-  children,
-  dark = false
+  children
 }: {
   keyVal: KType;
   children?: ReactNode;
-  dark?: boolean;
 }) {
   const { showModal } = useAppContext();
   return (
     <Wrapper>
       {children}
-      <Button dark={dark} onClick={() => showModal(keyVal as keyof ModalInfos)}>
-        ?
-      </Button>
+      <Button onClick={() => showModal(keyVal as keyof ModalInfos)}>?</Button>
     </Wrapper>
   );
 }

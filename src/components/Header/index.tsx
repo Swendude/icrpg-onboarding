@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { useHeroContext } from "../../context/heroContext";
-const HeaderContainer = styled.div`
+import { RoundedTop } from "../../styles/defaults";
+const HeaderContainer = styled(RoundedTop)`
   width: 100%;
   padding: 1.2rem 2.5rem;
-  border-radius: ${(props) => props.theme.borderRadiusTop};
+  border: none;
   display: flex;
   justify-content: space-between;
 `;

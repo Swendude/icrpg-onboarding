@@ -1,63 +1,60 @@
 import { useHeroContext } from "../../context/heroContext";
-
+import { RoundedTop } from "../../styles/defaults";
 import styled from "styled-components";
 
-export const FormBlock = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow: hidden;
-  margin-bottom: 2rem;
+  gap: 2rem;
 `;
 
-export const FormLabel = styled.label`
+const Block = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const Label = styled(RoundedTop)`
   width: 100%;
   padding: 1rem;
-  color: ${(props) => props.theme.palette.common.text};
-  border: 1px solid;
   border-bottom: none;
-  border-radius: ${(props) => props.theme.borderRadiusTop};
-  border-color: ${(props) => props.theme.palette.common.foreground};
 `;
 
-export const FormInputText = styled.textarea`
-  border-radius: 0px;
-  width: calc(100%);
-  border-width: 1px;
+const InputText = styled.textarea`
   resize: none;
   background-color: ${(props) => props.theme.palette.common.foreground};
   color: ${(props) => props.theme.palette.common.background};
-  border-color: ${(props) => props.theme.palette.common.foreground};
-  outline: 0;
-  padding: 1rem;
-  :focus {
-    box-shadow: 0px 0px 0 2px black inset;
-  }
+  padding: 1.5rem;
 `;
 
 const DetailSection = () => {
   const { hero, setName, setStory } = useHeroContext();
   return (
-    <form>
-      <FormBlock>
-        <FormLabel htmlFor="name">✏️ Name</FormLabel>
-        <FormInputText
+    <Wrapper>
+      <Block>
+        <Label as="label" htmlFor="name">
+          ✏️ Name
+        </Label>
+        <InputText
           name="name"
           value={hero.name}
           onChange={(e) => setName(e.target.value)}
           rows={1}
         />
-      </FormBlock>
-      <FormBlock>
-        <FormLabel htmlFor="story">📖 Story</FormLabel>
-        <FormInputText
+      </Block>
+      <Block>
+        <Label as="label" htmlFor="story">
+          📖 Story
+        </Label>
+        <InputText
           name="story"
           value={hero.story}
           onChange={(e) => setStory(e.target.value)}
           rows={3}
         />
-      </FormBlock>
-    </form>
+      </Block>
+    </Wrapper>
   );
 };
 

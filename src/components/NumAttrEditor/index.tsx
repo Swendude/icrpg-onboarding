@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { RoundedTop } from "../../styles/defaults";
 import HelpButton from "../HelpButton";
 
 const ButtonRow = styled.div`
@@ -17,7 +18,6 @@ const Button = styled.button<{ enabled?: boolean }>`
   font-size: 2.5rem;
   background-color: ${(props) => props.theme.palette.common.background};
   color: ${(props) => props.theme.palette.common.text};
-  border-color: ${(props) => props.theme.palette.common.text};
   border-width: 0 1px 1px 1px;
   border-style: solid;
 
@@ -64,15 +64,11 @@ const EditorTitle = styled.h3`
   font-size: 1.8rem;
 `;
 
-const InnerWrapper = styled.div`
+const InnerWrapper = styled(RoundedTop)`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 1rem;
-  border-color: ${(props) => props.theme.palette.common.text};
-  border-radius: ${(props) => props.theme.borderRadiusTop};
-  border-style: solid;
-  border-width: 1px 1px 1px 1px;
 `;
 
 const Wrapper = styled.div`

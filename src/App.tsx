@@ -10,7 +10,7 @@ import { useHeroContext } from "./context/heroContext";
 import NumAttrSection from "./components/NumAttrSection";
 import { useGameContext } from "./context/gameContext";
 import BioformSection from "./components/BioformSection";
-
+import { RoundedTop } from "./styles/defaults";
 const Global = createGlobalStyle`
   body {
     background-color: ${(props) => props.theme.palette.common.background};
@@ -21,18 +21,20 @@ const Global = createGlobalStyle`
   a {
     color: ${(props) => props.theme.palette.common.foreground};
   }
+  
+  * {
+    border-color: ${(props) => props.theme.palette.common.foreground};
+  }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled(RoundedTop)`
   max-width: 88vw;
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
   min-height: 96vh;
-  border: 5px solid;
-  border-color: ${(props) => props.theme.palette.common.text};
-  border-radius: ${(props) => props.theme.borderRadiusTop};
+  border-width: 5px;
   display: flex;
   flex-direction: column;
 
@@ -69,7 +71,6 @@ const Spacer = styled.div`
   border-style: dashed;
   border-width: 1px 0 0 0;
   margin: 4rem 0;
-  border-color: ${(props) => props.theme.palette.common.text};
 `;
 
 const HSpacer = styled(Spacer)`
