@@ -83,8 +83,16 @@ const HSpacer = styled(Spacer)`
 `;
 
 function App() {
-  const { hero, final, setStat, setEffort, setBioform, setType, setAbility } =
-    useHeroContext();
+  const {
+    hero,
+    final,
+    setStat,
+    setEffort,
+    setBioform,
+    setType,
+    setAbility,
+    setTypeLoot
+  } = useHeroContext();
   const { settings } = useGameContext();
   return (
     <>
@@ -218,6 +226,35 @@ function App() {
             )}
           />
           <Spacer />
+
+          <HelpButton keyVal={"LOOT"}>
+            <HTitleText>Loot</HTitleText>
+          </HelpButton>
+          <HDescr>
+            <HyperLinkedText
+              text={
+                "HEROES are nothing without their LOOT, they are the core of the game and represent your growth as a HERO while you take down mighty foes and save empires from certain doom! Your TYPE provides 1 piece of LOOT, and you are free to choose 4 LOOT from the starting list!"
+              }
+            />
+          </HDescr>
+          <SelectorSection
+            value={hero.typeLoot}
+            stringify={(val) => (!val ? "" : val.name)}
+            setter={(val) =>
+              setTypeLoot(hero.type?.startingLoot.find((t) => t.name === val))
+            }
+            options={hero.type ? hero.type.startingLoot : []}
+            Content={({ selected }) => (
+              <DescriptionInfo
+                description={selected ? selected.description : undefined}
+                notSetMsg={
+                  hero.type
+                    ? "Select an option to see more info!"
+                    : "Select a TYPE first!"
+                }
+              />
+            )}
+          />
         </Main>
       </Wrapper>
       <Explainer />

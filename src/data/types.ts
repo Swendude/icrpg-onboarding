@@ -23,7 +23,36 @@ const types: HeroType[] = [
         adder: undefined
       }
     ],
-    startingLoot: []
+    startingLoot: [
+      {
+        name: "Longsword",
+        description: "WEAPON, the classic longsword has served many HEROES",
+        adder: {
+          stats: undefined,
+          effort: {
+            WEAPON: 1
+          },
+          properties: undefined
+        }
+      },
+      {
+        name: "Plated Armor",
+        description: "ARMOR, defend yourself, or perish.",
+        adder: {
+          stats: undefined,
+          effort: undefined,
+          properties: {
+            DEFENSE: 2
+          }
+        }
+      },
+      {
+        name: "Banner",
+        description:
+          "Ever loyal, wave this banner to make an ALLIES roll EASY!",
+        adder: undefined
+      }
+    ]
   },
   {
     name: "Thief",
@@ -49,7 +78,32 @@ const types: HeroType[] = [
         adder: undefined
       }
     ],
-    startingLoot: []
+    startingLoot: [
+      {
+        name: "Lockpick",
+        description:
+          "With this tool nobody can stop you, picking any lock is EASY, breaks on a NATURAL 1",
+        adder: undefined
+      },
+      {
+        name: "Hood",
+        description:
+          "This elvish hood hides your face and grants you amazing nimbleness",
+        adder: {
+          stats: {
+            DEX: 2
+          },
+          effort: undefined,
+          properties: undefined
+        }
+      },
+      {
+        name: "Sleeping darts",
+        description:
+          "Ten sharp and pointy darts filled with a impact activated sleep agent. Disables target for 1d4 turns, or until attacked.",
+        adder: undefined
+      }
+    ]
   },
   {
     name: "Mage",
@@ -74,7 +128,34 @@ const types: HeroType[] = [
         adder: undefined
       }
     ],
-    startingLoot: []
+    startingLoot: [
+      {
+        name: "Spark",
+        description: "Ignite your foe, deal MAGIC damage for 1D4 TURNS.",
+        type: "spell",
+        level: 0,
+        adder: {
+          stats: undefined,
+          effort: undefined,
+          properties: undefined
+        }
+      },
+      {
+        name: "Jolt",
+        description:
+          "Deal MAGIC damage, the target makes a CON check or is unable to MOVE on their next TURN",
+        adder: {
+          stats: undefined,
+          effort: undefined,
+          properties: undefined
+        }
+      },
+      {
+        name: "Slow",
+        description: "Delay a TIMER by 1, always HARD",
+        adder: undefined
+      }
+    ]
   }
 ];
 

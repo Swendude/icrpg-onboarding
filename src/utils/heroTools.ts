@@ -42,20 +42,25 @@ export const finalizeHero = (hero: Hero): FinalHeroStats => {
     effort: hero.effort,
     properties: hero.properties
   };
-  const allAdders = [hero.bioform && hero.bioform.adder, heroBaseVals].filter(
-    (adder) => {
-      if (adder) {
-        return true;
-      }
-      return false;
+  const allAdders = [
+    hero.bioform?.adder,
+    heroBaseVals,
+    hero.typeLoot?.adder
+  ].filter((adder) => {
+    if (adder) {
+      return true;
     }
-  ) as HeroAdder[];
+    return false;
+  }) as HeroAdder[];
   return {
     final: allAdders.reduce(addAdder, defaultHeroStatVals),
     bioform: hero.bioform
       ? [hero.bioform.adder].reduce(addAdder, defaultHeroStatVals)
       : defaultHeroStatVals,
-    loot: defaultHeroStatVals
+    loot:
+      hero.typeLoot && hero.typeLoot.adder
+        ? [hero.typeLoot.adder].reduce(addAdder, defaultHeroStatVals)
+        : defaultHeroStatVals
   };
 };
 

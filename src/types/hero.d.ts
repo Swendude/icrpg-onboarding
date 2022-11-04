@@ -7,7 +7,8 @@ export type Hero = {
   bioform: Bioform | undefined;
   type: HeroType | undefined;
   ability: Ability | undefined;
-  inventory: Item[];
+  typeLoot: Item | undefined;
+  loot: Item[];
 };
 
 // Something that can add stuff to a hero
