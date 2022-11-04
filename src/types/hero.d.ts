@@ -15,6 +15,19 @@ type HeroAdder = {
   properties: Partial<Properties> | undefined;
 };
 
+export type HeroType = {
+  name: string;
+  description: string;
+  startingAbilities: Ability[];
+  startingLoot: Item[];
+};
+
+type Ability = {
+  name: string;
+  description: string;
+  adders: HeroAdder;
+};
+
 export type Bioform = {
   name: string;
   description: string;
@@ -48,10 +61,19 @@ type Effort = {
 
 export type EffortKey = keyof Effort;
 
-type Item = {
+type Item = BasicItem | AbilityItem;
+
+type BasicItem = {
   name: string;
   description: string;
-  adder: HeroAdder;
-  defense: number;
-  effort: Effort;
+  adder: HeroAdder | undefined;
+};
+
+type AbilityItem = {
+  name: string;
+  type: "spell" | "power";
+  level: number;
+  stat: StatKey;
+  description: string;
+  adder: HeroAdder | undefined;
 };
