@@ -7,6 +7,7 @@ declare module "styled-components" {
     borderRadiusTop: string;
     borderRadiusBottom: string;
     borderRadiusLeft: string;
+    borderRadiusRight: string;
     palette: {
       common: {
         background: string;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import AdderBlocks from "../AdderBlocks";
-import { Bioform } from "../../types/hero";
+import { HeroAdder } from "../../types/hero";
 
 const InfoText = styled.p`
   margin: 1.5rem;
@@ -14,24 +14,30 @@ const BlockWrapper = styled.div`
   flex-direction: column;
 `;
 
-const BioFormInfo = ({ selected }: { selected: Bioform | undefined }) => {
+function AdderInfo<
+  T extends { description: string; adder: HeroAdder | undefined }
+>({ selected, notSetMsg }: { selected: T | undefined; notSetMsg: string }) {
   if (selected) {
     return (
       <>
         <InfoText>{selected.description}</InfoText>
-        <BlockWrapper>
-          <AdderBlocks adder={selected.adder} />
-        </BlockWrapper>
+        {selected.adder ? (
+          <BlockWrapper>
+            <AdderBlocks adder={selected.adder} />
+          </BlockWrapper>
+        ) : (
+          <></>
+        )}
       </>
     );
   }
   return (
     <>
       <InfoText>
-        <p>Select a bioform to see more info!</p>
+        <p>{notSetMsg}</p>
       </InfoText>
     </>
   );
-};
+}
 
-export default BioFormInfo;
+export default AdderInfo;

@@ -5,6 +5,7 @@ const makeDefaultTheme = (borderRadius: number) => ({
   borderRadiusTop: `${borderRadius}px ${borderRadius}px 0 0`,
   borderRadiusBottom: `0 0 ${borderRadius}px ${borderRadius}px`,
   borderRadiusLeft: `${borderRadius}px 0 0 ${borderRadius}px`,
+  borderRadiusRight: `0 ${borderRadius}px ${borderRadius}px 0`,
   palette: {
     common: {
       foreground: "#cccccc",

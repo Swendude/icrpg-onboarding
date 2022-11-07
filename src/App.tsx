@@ -12,10 +12,9 @@ import { useGameContext } from "./context/gameContext";
 import { bioforms } from "./data/bioforms";
 import { RoundedTop } from "./styles/defaults";
 import SelectorSection from "./components/SelectorSection";
-import BioFormInfo from "./components/BioformInfo";
+import AdderInfo from "./components/AdderInfo";
 import types from "./data/types";
 import DescriptionInfo from "./components/DescriptionInfo";
-import { Ability } from "./types/hero";
 
 const Global = createGlobalStyle`
   body {
@@ -127,7 +126,9 @@ function App() {
             stringify={(val) => (!val ? "" : val.name)}
             setter={(val) => setBioform(bioforms.find((bf) => bf.name === val))}
             options={bioforms}
-            Content={BioFormInfo}
+            Content={({ selected }) => (
+              <AdderInfo selected={selected} notSetMsg="Pick a Bioform!" />
+            )}
           />
           <Spacer />
           <HelpButton keyVal={"Type"}>
@@ -245,8 +246,8 @@ function App() {
             }
             options={hero.type ? hero.type.startingLoot : []}
             Content={({ selected }) => (
-              <DescriptionInfo
-                description={selected ? selected.description : undefined}
+              <AdderInfo
+                selected={selected}
                 notSetMsg={
                   hero.type
                     ? "Select an option to see more info!"
