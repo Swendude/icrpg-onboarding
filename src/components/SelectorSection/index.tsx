@@ -1,6 +1,8 @@
 import { FC } from "react";
 import styled from "styled-components";
 import Selector from "../Selector";
+import Description from "../Description";
+import { HeroAdder } from "../../types/hero";
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,18 +21,20 @@ const InfoWrapper = styled.div`
   border-color: ${(props) => props.theme.palette.common.foreground};
 `;
 
-function SelectorSection<V>({
+function SelectorSection<
+  V extends { name: string; description: string; adder?: HeroAdder | undefined }
+>({
   value,
   stringify,
   setter,
   options,
-  Content
+  notSetMsg
 }: {
   value: V | undefined;
   stringify: (value: V | undefined) => string;
   setter: (value: string) => void;
   options: V[];
-  Content?: FC<{ selected: V | undefined }>;
+  notSetMsg: string;
 }) {
   return (
     <Wrapper>
@@ -39,11 +43,9 @@ function SelectorSection<V>({
         onChange={setter}
         options={options.map(stringify)}
       />
-      {Content && (
-        <InfoWrapper>
-          <Content selected={value} />
-        </InfoWrapper>
-      )}
+      <InfoWrapper>
+        <Description selected={value} notSetMsg={notSetMsg} />
+      </InfoWrapper>
     </Wrapper>
   );
 }

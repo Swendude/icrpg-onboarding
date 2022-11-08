@@ -33,7 +33,8 @@ const types: HeroType[] = [
             WEAPON: 1
           },
           properties: undefined
-        }
+        },
+        category: "Weapon"
       },
       {
         name: "Plated Armor",
@@ -44,13 +45,15 @@ const types: HeroType[] = [
           properties: {
             DEFENSE: 2
           }
-        }
+        },
+        category: "Armor"
       },
       {
         name: "Banner",
         description:
           "Ever loyal, wave this banner to make an ALLIES roll EASY!",
-        adder: undefined
+        adder: undefined,
+        category: "Tool"
       }
     ]
   },
@@ -83,7 +86,8 @@ const types: HeroType[] = [
         name: "Lockpick",
         description:
           "With this tool nobody can stop you, picking any lock is EASY, breaks on a NATURAL 1",
-        adder: undefined
+        adder: undefined,
+        category: "Tool"
       },
       {
         name: "Hood",
@@ -95,13 +99,15 @@ const types: HeroType[] = [
           },
           effort: undefined,
           properties: undefined
-        }
+        },
+        category: "Armor"
       },
       {
         name: "Sleeping darts",
         description:
           "Ten sharp and pointy darts filled with a impact activated sleep agent. Disables target for 1d4 turns, or until attacked.",
-        adder: undefined
+        adder: undefined,
+        category: "Consumable"
       }
     ]
   },
@@ -138,7 +144,8 @@ const types: HeroType[] = [
           stats: undefined,
           effort: undefined,
           properties: undefined
-        }
+        },
+        category: "Scroll"
       },
       {
         name: "Jolt",
@@ -148,12 +155,14 @@ const types: HeroType[] = [
           stats: undefined,
           effort: undefined,
           properties: undefined
-        }
+        },
+        category: "Scroll"
       },
       {
         name: "Slow",
         description: "Delay a TIMER by 1, always HARD",
-        adder: undefined
+        adder: undefined,
+        category: "Scroll"
       }
     ]
   }

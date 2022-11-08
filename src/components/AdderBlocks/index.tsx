@@ -8,17 +8,21 @@ const Block = styled(Default)`
   display: flex;
   width: fit-content;
   border-radius: ${(props) => props.theme.borderRadiusRight};
-  gap: 2rem;
+  /* border-left: 3px solid; */
+  /* gap: 1rem; */
   color: ${(props) => props.theme.palette.common.text};
   font-size: 1.5rem;
 `;
 const Key = styled.p`
   padding: 0.5rem;
+  background-color: ${(props) => props.theme.palette.common.foreground};
+  color: ${(props) => props.theme.palette.common.background};
+  padding-right: 2rem;
 `;
 
 const Mod = styled.p`
-  border-left: 1px dashed;
-  border-color: ${(props) => props.theme.palette.common.text};
+  /* border-left: 1px dashed;
+  border-color: ${(props) => props.theme.palette.common.foreground}; */
   padding: 0.5rem;
 `;
 
@@ -35,7 +39,8 @@ function MappingBonus<M extends object>({
           return (
             <Block key={i}>
               <Key>
-                <HyperLinkedText text={key_ as string} />
+                {key_ as string}
+                {/* <HyperLinkedText text={key_ as string} /> */}
               </Key>
               <Mod>{`${maybeStat > 0 ? "+" : "-"}${maybeStat}`}</Mod>
             </Block>
@@ -48,7 +53,12 @@ function MappingBonus<M extends object>({
 
 const Blocks = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
+`;
+
+const Descr = styled.p`
+  padding-bottom: 0.5rem;
 `;
 
 const AdderBlocks = ({ adder }: { adder: HeroAdder }) => {

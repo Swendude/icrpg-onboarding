@@ -14,8 +14,8 @@ const BlockWrapper = styled.div`
   flex-direction: column;
 `;
 
-function AdderInfo<
-  T extends { description: string; adder: HeroAdder | undefined }
+function Description<
+  T extends { description: string; adder?: HeroAdder | undefined }
 >({ selected, notSetMsg }: { selected: T | undefined; notSetMsg: string }) {
   if (selected) {
     return (
@@ -40,4 +40,4 @@ function AdderInfo<
   );
 }
 
-export default AdderInfo;
+export default Description;

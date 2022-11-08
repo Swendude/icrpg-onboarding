@@ -1,20 +1,18 @@
-import styled from "styled-components";
-import Header from "./components/Header";
+import styled, { createGlobalStyle } from "styled-components";
 import DetailsSection from "./components/DetailsSection";
-import { createGlobalStyle } from "styled-components";
 import Explainer from "./components/Explainer";
-import HelpButton from "./components/HelpButton";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
+import HelpButton from "./components/HelpButton";
 import HyperLinkedText from "./components/HyperLinkedText";
-import { useHeroContext } from "./context/heroContext";
+import Inventory from "./components/Inventory";
 import NumAttrSection from "./components/NumAttrSection";
-import { useGameContext } from "./context/gameContext";
-import { bioforms } from "./data/bioforms";
-import { RoundedTop } from "./styles/defaults";
 import SelectorSection from "./components/SelectorSection";
-import AdderInfo from "./components/AdderInfo";
-import types from "./data/types";
-import DescriptionInfo from "./components/DescriptionInfo";
+import { useGameContext } from "./context/gameContext";
+import { useHeroContext } from "./context/heroContext";
+import { bioforms } from "./data/bioforms";
+import types from "./data/heroTypes";
+import { RoundedTop } from "./styles/defaults";
 
 const Global = createGlobalStyle`
   body {
@@ -126,9 +124,7 @@ function App() {
             stringify={(val) => (!val ? "" : val.name)}
             setter={(val) => setBioform(bioforms.find((bf) => bf.name === val))}
             options={bioforms}
-            Content={({ selected }) => (
-              <AdderInfo selected={selected} notSetMsg="Pick a Bioform!" />
-            )}
+            notSetMsg="Pick a Bioform!"
           />
           <Spacer />
           <HelpButton keyVal={"Type"}>
@@ -146,16 +142,7 @@ function App() {
             stringify={(val) => (!val ? "" : val.name)}
             setter={(val) => setType(types.find((t) => t.name === val))}
             options={types}
-            Content={({ selected }) => (
-              <DescriptionInfo
-                description={selected ? selected.description : undefined}
-                notSetMsg={
-                  hero.type
-                    ? "Select an option to see more info!"
-                    : "Select a TYPE first!"
-                }
-              />
-            )}
+            notSetMsg="Pick a Type!"
           />
           <Spacer />
           <HelpButton keyVal={"STATS"}>
@@ -215,16 +202,11 @@ function App() {
               )
             }
             options={hero.type?.startingAbilities || []}
-            Content={({ selected }) => (
-              <DescriptionInfo
-                description={selected ? selected.description : undefined}
-                notSetMsg={
-                  hero.type
-                    ? "Select an option to see more info!"
-                    : "Select a TYPE first!"
-                }
-              />
-            )}
+            notSetMsg={
+              hero.type
+                ? "Select an option to see more info!"
+                : "Select a TYPE first!"
+            }
           />
           <Spacer />
 
@@ -245,17 +227,25 @@ function App() {
               setTypeLoot(hero.type?.startingLoot.find((t) => t.name === val))
             }
             options={hero.type ? hero.type.startingLoot : []}
-            Content={({ selected }) => (
-              <AdderInfo
-                selected={selected}
-                notSetMsg={
-                  hero.type
-                    ? "Select an option to see more info!"
-                    : "Select a TYPE first!"
-                }
-              />
-            )}
+            notSetMsg={
+              hero.type
+                ? "Select an option to see more info!"
+                : "Select a TYPE first!"
+            }
           />
+          <Spacer />
+
+          <HelpButton keyVal={"INVENTORY"}>
+            <HTitleText>INVENTORY</HTitleText>
+          </HelpButton>
+          <HDescr>
+            <HyperLinkedText
+              text={
+                "Pick 4 LOOT to flesh out your hero and prepare for the perils you will face!"
+              }
+            />
+          </HDescr>
+          <Inventory />
         </Main>
       </Wrapper>
       <Explainer />

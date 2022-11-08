@@ -19,6 +19,7 @@ export const withRoundedTop = (props: any): string => {
 
 export const withDefault = (props: any): string => {
   const result = `border-style: solid;
+    background-color: ${props.theme.palette.common.background};
     border-width: 1px;
     color: ${props.theme.palette.common.text};
   `;

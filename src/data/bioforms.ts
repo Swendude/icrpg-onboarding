@@ -34,10 +34,12 @@ export const bioforms: Bioform[] = [
       "Gnomes are known for their love of tobacco and red hats, as well as their poor sense of humor.",
     adder: {
       stats: {
-        DEX: 1
+        DEX: 1,
+        INT: 4,
+        CON: 1
       },
-      effort: { MAGIC: 1 },
-      properties: undefined
+      effort: { MAGIC: 1, ULTIMATE: 5 },
+      properties: { HP: 10 }
     }
   }
 ];

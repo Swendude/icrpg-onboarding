@@ -13,9 +13,9 @@ export type Hero = {
 
 // Something that can add stuff to a hero
 type HeroAdder = {
-  stats: Partial<Stats> | undefined;
-  effort: Partial<Effort> | undefined;
-  properties: Partial<Properties> | undefined;
+  stats?: Partial<Stats>;
+  effort?: Partial<Effort>;
+  properties?: Partial<Properties>;
 };
 
 export type HeroType = {
@@ -64,12 +64,15 @@ type Effort = {
 
 export type EffortKey = keyof Effort;
 
+type ItemCategory = "Scroll" | "Weapon" | "Consumable" | "Armor" | "Tool";
+
 type Item = BasicItem | AbilityItem;
 
 type BasicItem = {
   name: string;
   description: string;
   adder: HeroAdder | undefined;
+  category: ItemCategory;
 };
 
 type AbilityItem = {
@@ -79,4 +82,5 @@ type AbilityItem = {
   stat: StatKey;
   description: string;
   adder: HeroAdder | undefined;
+  category: ItemCategory;
 };
