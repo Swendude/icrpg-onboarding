@@ -4,6 +4,7 @@ import startingLoot from "../../data/startingLoot";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { Item } from "../../types/hero";
 import AdderBlocks from "../AdderBlocks";
+import { useHeroContext } from "../../context/heroContext";
 
 const Wrapper = styled(RoundedTop)``;
 
@@ -16,13 +17,16 @@ const Status = styled.h3`
 `;
 
 const Inventory = () => {
+  const { hero } = useHeroContext();
   return (
-    <Wrapper>
-      <Header>
-        <Status>Choose 4 items!</Status>
-      </Header>
-      <ItemScroller items={startingLoot} />
-    </Wrapper>
+    <div>
+      <Wrapper>
+        <Header>
+          <Status>Choose 4 items!</Status>
+        </Header>
+        <ItemScroller items={startingLoot} />
+      </Wrapper>
+    </div>
   );
 };
 
@@ -62,13 +66,6 @@ const ItemScroller = ({ items }: { items: Item[] }) => (
   </Root>
 );
 
-const ItemBox = styled(Default)`
-  display: flex;
-  flex-direction: column;
-  border-radius: ${(props) => props.theme.borderRadiusTop};
-  padding: 1.5rem;
-  padding-left: 2rem;
-`;
 const ItemHeader = styled.h3`
   padding-bottom: 0.5rem;
 `;
@@ -82,6 +79,15 @@ const PickButton = styled.button`
   margin-top: 2rem;
   width: 8rem;
   align-self: center;
+`;
+
+const ItemBox = styled(Default)`
+  display: flex;
+  flex-direction: column;
+  border-radius: ${(props) => props.theme.borderRadiusTop};
+  padding: 1.5rem;
+  padding-left: 2rem;
+  margin: 2rem;
 `;
 
 const ItemCat = styled.span`
@@ -101,7 +107,6 @@ const ItemView = ({ item }: { item: Item }) => {
         {item.name}
         <ItemCat>{item.category}</ItemCat>
       </ItemHeader>
-      {/* <PickButton>pick</PickButton> */}
       <ItemDescr>{item.description}</ItemDescr>
       {item.adder ? (
         <ItemAdders>

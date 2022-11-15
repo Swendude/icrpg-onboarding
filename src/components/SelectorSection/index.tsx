@@ -1,4 +1,3 @@
-import { FC } from "react";
 import styled from "styled-components";
 import Selector from "../Selector";
 import Description from "../Description";
