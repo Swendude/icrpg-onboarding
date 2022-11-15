@@ -65,11 +65,7 @@ const ItemScroller = ({ items }: { items: Item[] }) => (
 const ItemBox = styled(Default)`
   display: flex;
   flex-direction: column;
-  /* border: none; */
-  /* border-width: 0 0 1px 0; */
   border-radius: ${(props) => props.theme.borderRadiusTop};
-  /* margin: 2.5rem; */
-
   padding: 1.5rem;
   padding-left: 2rem;
 `;

@@ -38,6 +38,11 @@ const Content = styled(Select.Content)`
   }
 `;
 
+const Spacer = styled.div`
+  height: 2rem;
+  border-top: 1px solid ${(props) => props.theme.palette.common.foreground};
+`;
+
 const Selector = ({
   options,
   value,
@@ -65,6 +70,7 @@ const Selector = ({
                 <Select.ItemText>{child}</Select.ItemText>
               </Item>
             ))}
+            <Spacer />
           </Select.Viewport>
           <Select.ScrollDownButton />
         </Content>
